@@ -1,0 +1,150 @@
+<div style="height: {{screenHeight}}px;">
+  <div class="scroll">
+	<div class="col-md-12" >
+        <button *ngIf="LoginOK" class="myButton" (click)="addComment()">
+          Aggiungi Commento
+        </button>
+			<div class="body_comment">
+     <!--  <div class="row">
+					<div class="avatar_comment col-md-2">
+					  <img src="{{src}}" alt="avatar"/>
+					</div>
+					<div class="box_comment col-md-9">
+					  <textarea class="commentar" placeholder="Scrivi un commento..."></textarea>
+					  <div class="box_post">
+						<div class="pull-right">
+						  <button onclick="submit_comment()" type="button" >Post</button>
+						</div>
+					  </div>
+					</div>
+				</div>-->
+
+				<div class="row">
+					<ul id="list_comment" class="col-sm-15">
+						<!-- Start List Comment 1 -->
+						<li class="box_result row" *ngFor="let student of Comm">
+							<div class="avatar_comment  col-sm-2">
+								<img src="{{student.user.photo}}" alt="avatar"/>
+							</div>
+							<div class="result_comment col-sm-8">
+								<h4>{{student.user.nome}} {{student.user.cognome}}</h4>
+								<div class="tools_comment" *ngIf="student.ranking == 1 && access.includes('g')">
+                  <img src="assets/g.png" height="12px" class="MMS" >
+                  <img src="{{RankAdd2}}" height="12px" class="MMS" >
+                  <img src="{{RankAdd3}}" height="12px" class="MMS">
+                  <img src="{{RankAdd4}}" height="12px" class="MMS">
+                  <img src="{{RankAdd5}}" height="12px" class="MMS" >
+								</div>
+								<div class="tools_comment" *ngIf="student.ranking == 2 && access.includes('g')">
+                  <img src="assets/g.png" height="12px" class="MMS" >
+                  <img src="assets/g.png" height="12px" class="MMS" >
+                  <img src="{{RankAdd3}}" height="12px" class="MMS">
+                  <img src="{{RankAdd4}}" height="12px" class="MMS">
+                  <img src="{{RankAdd5}}" height="12px" class="MMS" >
+								</div>
+								<div class="tools_comment" *ngIf="student.ranking == 3 && access.includes('g')">
+                  <img src="assets/g.png" height="12px" class="MMS" >
+                  <img src="assets/g.png" height="12px" class="MMS" >
+                  <img src="assets/g.png" height="12px" class="MMS">
+                  <img src="{{RankAdd4}}" height="12px" class="MMS">
+                  <img src="{{RankAdd5}}" height="12px" class="MMS" >
+								</div>
+								<div class="tools_comment" *ngIf="student.ranking == 4 && access.includes('g')">
+                  <img src="assets/g.png" height="12px" class="MMS" >
+                  <img src="assets/g.png" height="12px" class="MMS" >
+                  <img src="assets/g.png" height="12px" class="MMS">
+                  <img src="assets/g.png" height="12px" class="MMS">
+                  <img src="{{RankAdd5}}" height="12px" class="MMS" >
+								</div>
+								<div class="tools_comment" *ngIf="student.ranking == 5 && access.includes('g')">
+                  <img src="assets/g.png" height="12px" class="MMS" >
+                  <img src="assets/g.png" height="12px" class="MMS" >
+                  <img src="assets/g.png" height="12px" class="MMS">
+                  <img src="assets/g.png" height="12px" class="MMS">
+                  <img src="assets/g.png" height="12px" class="MMS" >
+								</div>
+								<div class="tools_comment" *ngIf="student.ranking == 1 && access.includes('y')">
+                  <img src="assets/y.png" height="12px" class="MMS" >
+                  <img src="{{RankAdd2}}" height="12px" class="MMS" >
+                  <img src="{{RankAdd3}}" height="12px" class="MMS">
+                  <img src="{{RankAdd4}}" height="12px" class="MMS">
+                  <img src="{{RankAdd5}}" height="12px" class="MMS" >
+								</div>
+								<div class="tools_comment" *ngIf="student.ranking == 2 && access.includes('y')">
+                  <img src="assets/y.png" height="12px" class="MMS" >
+                  <img src="assets/y.png" height="12px" class="MMS" >
+                  <img src="{{RankAdd3}}" height="12px" class="MMS">
+                  <img src="{{RankAdd4}}" height="12px" class="MMS">
+                  <img src="{{RankAdd5}}" height="12px" class="MMS" >
+								</div>
+								<div class="tools_comment" *ngIf="student.ranking == 3 && access.includes('y')">
+                  <img src="assets/y.png" height="12px" class="MMS" >
+                  <img src="assets/y.png" height="12px" class="MMS" >
+                  <img src="assets/y.png" height="12px" class="MMS">
+                  <img src="{{RankAdd4}}" height="12px" class="MMS">
+                  <img src="{{RankAdd5}}" height="12px" class="MMS" >
+								</div>
+								<div class="tools_comment" *ngIf="student.ranking == 4 && access.includes('y')">
+                  <img src="assets/y.png" height="12px" class="MMS" >
+                  <img src="assets/y.png" height="12px" class="MMS" >
+                  <img src="assets/y.png" height="12px" class="MMS">
+                  <img src="assets/y.png" height="12px" class="MMS">
+                  <img src="{{RankAdd5}}" height="12px" class="MMS" >
+								</div>
+								<div class="tools_comment" *ngIf="student.ranking == 5 && access.includes('y')">
+                  <img src="assets/y.png" height="12px" class="MMS" >
+                  <img src="assets/y.png" height="12px" class="MMS" >
+                  <img src="assets/y.png" height="12px" class="MMS">
+                  <img src="assets/y.png" height="12px" class="MMS">
+                  <img src="assets/y.png" height="12px" class="MMS" >
+								</div>
+								<div class="tools_comment" *ngIf="student.ranking == 1 && access.includes('r')">
+                  <img src="assets/r.png" height="12px" class="MMS" >
+                  <img src="{{RankAdd2}}" height="12px" class="MMS" >
+                  <img src="{{RankAdd3}}" height="12px" class="MMS">
+                  <img src="{{RankAdd4}}" height="12px" class="MMS">
+                  <img src="{{RankAdd5}}" height="12px" class="MMS" >
+								</div>
+								<div class="tools_comment" *ngIf="student.ranking == 2 && access.includes('r')">
+                  <img src="assets/r.png" height="12px" class="MMS" >
+                  <img src="assets/r.png" height="12px" class="MMS" >
+                  <img src="{{RankAdd3}}" height="12px" class="MMS">
+                  <img src="{{RankAdd4}}" height="12px" class="MMS">
+                  <img src="{{RankAdd5}}" height="12px" class="MMS" >
+								</div>
+								<div class="tools_comment" *ngIf="student.ranking == 3 && access.includes('r')">
+                  <img src="assets/r.png" height="12px" class="MMS" >
+                  <img src="assets/r.png" height="12px" class="MMS" >
+                  <img src="assets/r.png" height="12px" class="MMS">
+                  <img src="{{RankAdd4}}" height="12px" class="MMS">
+                  <img src="{{RankAdd5}}" height="12px" class="MMS" >
+								</div>
+								<div class="tools_comment" *ngIf="student.ranking == 4 && access.includes('r')">
+                  <img src="assets/r.png" height="12px" class="MMS" >
+                  <img src="assets/r.png" height="12px" class="MMS" >
+                  <img src="assets/r.png" height="12px" class="MMS">
+                  <img src="assets/r.png" height="12px" class="MMS">
+                  <img src="{{RankAdd5}}" height="12px" class="MMS" >
+								</div>
+								<div class="tools_comment" *ngIf="student.ranking == 5 && access.includes('r')">
+                  <img src="assets/r.png" height="12px" class="MMS" >
+                  <img src="assets/r.png" height="12px" class="MMS" >
+                  <img src="assets/r.png" height="12px" class="MMS">
+                  <img src="assets/r.png" height="12px" class="MMS">
+                  <img src="assets/r.png" height="12px" class="MMS" >
+								</div>
+								<p>{{student.descrizione}}</p>
+								<div class="tools_comment">
+									<span> <p>{{student.created_at.replace('T',' ').replace('.000000Z','')}}</p></span>
+                </div>
+							</div>
+							<div *ngIf="student.user.id == idUser" class="avatar_comment  col-sm-2">
+                <i class="fa fa-trash" aria-hidden="true" style="cursor: pointer;width: 11px;" (click)=" deleteComment(student.id)"></i>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+ </div>
+</div>

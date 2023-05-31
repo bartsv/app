@@ -1,0 +1,216 @@
+.map-container {
+  top: 0px;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+  margin: 0;
+  background-color: rgb(206, 123, 15);
+}
+
+.MMS{
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 15px;
+  margin-left: 15px;
+}
+.map-frame {
+  border: 0px solid black;
+  height: 100%;background-color: rgb(22, 7, 159);
+}
+
+#map {
+  height: 100%;background-color: #FAFAFA;
+  width: 100%;
+}
+.modal.left .modal-dialog,
+.modal.right .modal-dialog {
+  position: fixed;
+  margin: auto;
+  width: 30%;
+  height: 100%;
+  -webkit-transform: translate3d(0%, 0, 0);
+  -ms-transform: translate3d(0%, 0, 0);
+  -o-transform: translate3d(0%, 0, 0);
+  transform: translate3d(0%, 0, 0);
+}
+
+.modal.left .modal-content,
+.modal.right .modal-content {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.modal.left .modal-body,
+.modal.right .modal-body {
+  padding: 15px 15px 80px;
+}
+
+
+/*Left*/
+
+.modal.left.fade .modal-dialog {
+  left: -320px;
+  -webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
+  -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
+  -o-transition: opacity 0.3s linear, left 0.3s ease-out;
+  transition: opacity 0.3s linear, left 0.3s ease-out;
+}
+
+.modal.left.fade.in .modal-dialog {
+  left: 0;
+}
+
+
+/*Right*/
+
+.modal.right.fade .modal-dialog {
+  right: -320px;
+  -webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
+  -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
+  -o-transition: opacity 0.3s linear, right 0.3s ease-out;
+  transition: opacity 0.3s linear, right 0.3s ease-out;
+}
+
+.modal.right.fade.in .modal-dialog {
+  right: 0;
+}
+
+::ng-deep .mat-form-field .mat-input-element {
+  color: slategray;
+}
+::ng-deep .mat-form-field .mat-form-field-label {
+  color: slategray!important;
+}
+::ng-deep .mat-form-field .mat-form-field-underline {
+  background-color: slategray;
+}
+::ng-deep .mat-form-field .mat-form-field-ripple {
+  background-color: slategray;
+}
+::ng-deep .mat-form-field .mat-form-field-required-marker {
+  color: slategray;
+}
+
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: #ff884d!important;
+}
+::ng-deep .mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: #ff884d;
+}
+::ng-deep .mat-form-field.mat-focused .mat-form-field-required-marker {
+  color: #ff884d;
+}
+::ng-deep .mat-form-field.mat-focused .mat-input-element {
+  color: #ff884d;
+}
+
+
+
+::ng-deep .mat-form-field.mat-form-field-invalid .mat-input-element {
+  color: red;
+}
+::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-label {
+  color: red!important;
+}
+::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-label .mat-form-field-required-marker {
+  color: red;
+}
+::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-ripple {
+  background-color:red;
+}
+
+
+/* ----- MODAL STYLE ----- */
+
+.modal-content {
+  border-radius: 0;
+  border: none;
+}
+input[type="checkbox"] {
+  zoom: 1.5;
+}
+.file-input {
+  display: none;
+}
+.modal-header {
+  border-bottom-color: #EEEEEE;
+  background-color: #FAFAFA;
+}
+
+.modal-backdrop {
+  background-color: transparent;
+  display: none;
+}
+
+.modal {
+  pointer-events: none;
+  z-index: 10000000000000;
+}
+
+.modal-content {
+  pointer-events: auto;
+}
+.logo{
+  float: left;
+  margin-top: 5px;
+  margin-right: 5px;
+  margin-left: 5px;
+  height: 32px;
+  width: auto;
+}
+.overlay {
+  width: 400px;
+  position: absolute;
+  left: 0;
+  top: 39px;
+  background-color: rgb(250, 250, 250);
+  z-index: 1000
+}
+
+mat-form-field.mat-form-field {
+  font-size: 15px;
+}
+.pointer {cursor: pointer;}
+.navs
+{
+    border-bottom:5px solid rgb(179, 40, 40);
+}
+.nomelocale {
+  float: left;
+  display: block;
+  font-style: bold;
+  color: black;
+  text-align:left;
+  margin-right: 10px;
+  margin-top: 22px;
+  text-decoration: none;
+  font-size: 17px;
+}
+.close {
+  position: absolute;
+  right: 6px;
+  float: right;
+  top: 2px;
+  width: 12px;
+  height: 22px;
+  opacity: 0.3;
+}
+.close:hover {
+  opacity: 1;
+}
+.close:before, .close:after {
+  position: absolute;
+  left: 1px;
+  content: ' ';
+  height: 23px;
+  width: 2px;
+  background-color: #333;
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
+}
+

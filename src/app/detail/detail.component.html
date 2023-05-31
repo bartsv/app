@@ -1,0 +1,50 @@
+<div style="height: {{screenHeight}}px;">
+<div class="scroll">
+<img src="{{src}}" style="width:96% ;">
+<div class="form-group">
+  <label>Ranking:</label>
+  <p style="font-size: 163;">
+  <img src="{{RankAdd1}}" height="15px" class="MMS" >
+  <img src="{{RankAdd2}}" height="15px" class="MMS" >
+  <img src="{{RankAdd3}}" height="15px" class="MMS">
+  <img src="{{RankAdd4}}" height="15px" class="MMS">
+  <img src="{{RankAdd5}}" height="15px" class="MMS" >
+  {{Point.ranking}} ({{Point.Commenti.length}}) </p>
+  </div>
+  <div class="form-group">
+  <label>Indirizzo:</label>
+  <p>{{Point.address}},{{Point.city}},{{Point.naz}}</p>
+  </div>
+  <div class="form-group" *ngIf="Point.phone!==''">
+  <label>Telefono:</label>
+  <p>{{Point.phone}}</p>
+  </div>
+  <div class="form-group" *ngIf="Point.website!==''">
+  <label>Indirizzo:</label>
+  <a href="{{Point.website}}" target="_blank">{{Point.website}}</a>
+  </div>
+<div class="form-group">
+  <label for="acess">Accessibilit&aacute;:</label>
+
+  <p style="text-align: center;">
+    <img src="{{Rampa}}" height="30px" class="MMS" >
+    <img src="{{Ascensore}}" height="30px" class="MMS">
+    <img src="{{MMScale}}" height="30px" class="MMS">
+    <img src="{{WC}}" height="30px" class="MMS">
+    <img src="{{Parking}}" height="30px" class="MMS">
+  </p>
+</div>
+<div class="form-group">
+  <p>Creato da:</p>
+  <p>{{Point.user.nome}} {{Point.user.cognome}}</p>
+  <p>{{Point.created_at}}</p>
+</div>
+
+<div class="form-group">
+<button *ngIf="LoginOK" class="myButton" (click)="modP()">
+  Modifica Luogo
+</button>
+</div>
+
+</div>
+</div>

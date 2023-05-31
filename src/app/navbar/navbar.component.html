@@ -1,0 +1,481 @@
+
+<nav class="navbar   navbar-dark bg-ligth navbar-expand-lg">
+  <span class="logo"><a class="navbar-brand " href="#">
+    <img src="assets/xx.png" alt="">
+    ccessApp
+  </a>
+  <!--
+  <mat-form-field class="example-form-field" appearance="fill">
+    <mat-label style="color: white;">Cerca...</mat-label>
+    <input matInput style="color: white;font-size: large;" type="text" [formControl]="myControl"(keyup)="onKeyDownEvent($event)" matInput placeholder="Cerca..." [matAutocomplete]="auto">
+    <mat-icon class="white-icon" matPrefix>search</mat-icon>
+    <mat-autocomplete  #auto="matAutocomplete">
+      <mat-option  (onSelectionChange)="onEnter($event,state.id)" style="background-color: white;"   *ngFor="let state of states" [value]="state.display_name">
+        <img class="white-icon" style="vertical-align:middle;background: white;text-align: center;" aria-hidden src="{{state.icon}}" height="25" />
+        <span style="color:black;">{{ state.display_name }}</span>
+      </mat-option>
+    </mat-autocomplete>
+        </mat-form-field>
+-->
+</span>
+
+<div class="search-container">
+  <form action="/action_page.php">
+    <input type="text" placeholder="Search.." name="search">
+    <button type="submit"><i class="fa fa-search"></i></button>
+  </form>
+</div>
+<div class="collapse navbar-collapse" id="navbarsExample05">
+    <ul   class="navbar-nav mr-auto">
+
+    <li class="nav-item d-flex">
+
+    </li>
+    <li class="nav-item ">
+    </li>
+  </ul>
+  <ul class="navbar-nav" *ngIf="!LoginOK">
+   <li class="nav-item">
+   <a  data-toggle="modal" class="link" data-target="#LOGIN" style="cursor: pointer;"  >Accedi</a>
+   </li>
+   <li class="nav-item">
+   <a data-toggle="modal" data-target="#REGISTER" class="link" style="cursor: pointer;">Registrati</a>
+   </li>
+</ul>
+<ul class="navbar-nav" *ngIf="LoginOK">
+  <li class="nav-item dropdown">
+    <img src="{{photoU}}" style="width: 22px;height: 23px;margin-right: 1px;margin-top: 0ch;">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+     {{nomeU}}
+
+    </a>
+    <div class="dropdown-menu" style="float: right;" aria-labelledby="navbarDropdownMenuLink">
+      <a class="dropdown-item" data-toggle="modal" data-target="#NEWPSW" style="cursor: pointer;">Modifica Password</a>
+      <a class="dropdown-item" data-toggle="modal" data-target="#NEWAVATAR" style="cursor: pointer;">Modifica Avatar</a>
+      <a class="dropdown-item" (click)="LogOut()">Esci</a>
+    </div>
+  </li>
+</ul>
+</div>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+</nav>
+
+
+
+
+
+<!---
+  <div class="topnav" id="myTopnav">
+  <div class="logo">
+    <img src="assets/xx.png"  alt="">
+    <p>ccessApp</p>
+  </div>
+
+  <div class="search-container">
+    <form action="/action_page.php">
+      <input type="text" placeholder="Search.." name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+  <div *ngIf="LoginOK">
+    <a data-toggle="modal" data-target="#LOGIN" style="cursor: pointer;"  >Accedi</a>
+    <a data-toggle="modal" data-target="#REGISTER" style="cursor: pointer;">Registrati</a>
+  </div>
+<ul class="navbar-nav"   style="float: right;">
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+        <img src="{{photoU}}" style="width: 25px;height: 25px;margin-right: 5px;">
+     {{nomeU}}
+
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+      <a class="dropdown-item" data-toggle="modal" data-target="#NEWPSW" style="cursor: pointer;">Modifica Password</a>
+      <a class="dropdown-item" data-toggle="modal" data-target="#NEWAVATAR" style="cursor: pointer;">Modifica Avatar</a>
+      <a class="dropdown-item" (click)="LogOut()">Esci</a>
+    </div>
+  </li>
+</ul>
+  </div>
+-->
+
+
+
+
+
+<div class="modal fade" id="NEWPSW" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLongTitle">Modifica Password</h3>
+        <button #closeModalMP type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <form [formGroup]="reactiveFormNP">
+          <div class="col-md-12 MMS">
+            <mat-form-field class="example-full-width" appearance="standard">
+              <mat-label style="color: black;">Nome</mat-label>
+              <mat-icon matPrefix>account_circle</mat-icon>
+              <input matInput placeholder="Inserisci Cognome"  style="color: black;"
+              [formControl]="NomeMPControl" type="text">
+              <mat-error *ngIf="NomeMPControl.invalid && NomeControl.dirty">
+                Inserisci un Nome lungo almeno 3 caratteri
+              </mat-error>
+              <mat-error *ngIf="NomeMPControl.hasError('required')">
+                Nome &eacute; <strong>richiesto</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        <div class="col-md-12 MMS">
+          <mat-form-field class="example-full-width" appearance="standard">
+            <mat-label style="color: black;">Cognome</mat-label>
+            <mat-icon matPrefix>account_circle</mat-icon>
+            <input matInput placeholder="Inserisci Cognome"  style="color: black;"
+            [formControl]="CognomeMPControl" type="text">
+            <mat-error *ngIf="CognomeMPControl.invalid && CognomeControl.dirty">
+              Inserisci un cognome lungo almeno 3 caratteri
+            </mat-error>
+            <mat-error *ngIf="CognomeMPControl.hasError('required')">
+              Cognome &eacute; <strong>richiesto</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-12 MMS">
+          <mat-form-field class="example-full-width" appearance="standard">
+            <mat-label style="color: black;">Nickname</mat-label>
+            <mat-icon matPrefix>account_circle</mat-icon>
+            <input matInput placeholder="Inserisci Nickname"  style="color: black;"
+            [formControl]="NickMPControl" type="text">
+            <mat-error *ngIf="NickMPControl.invalid && NickControl.dirty">
+              Inserisci un Nickname lungo almeno 3 caratteri
+            </mat-error>
+            <mat-error *ngIf="NickMPControl.hasError('required')">
+              Nickname &eacute; <strong>richiesto</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+          <div class="col-md-12 MMS">
+            <mat-form-field class="example-full-width" appearance="standard">
+              <mat-label style="color: black;">E-Mail</mat-label>
+              <mat-icon matPrefix>mail</mat-icon>
+              <input matInput placeholder="Inserisci E-Mail"  style="color: black;"
+              [formControl]="MailNPControl" type="email">
+              <mat-error *ngIf="MailNPControl.invalid && MailControl.dirty">
+                Inserisci un indirizzo valido
+              </mat-error>
+              <mat-error *ngIf="MailNPControl.hasError('required')">
+                E-Mail &eacute; <strong>richiesto</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-md-12 MMS">
+            <mat-form-field class="example-full-width" appearance="standard">
+              <mat-label style="color: black;">Password</mat-label>
+              <mat-icon matPrefix>vpn_key</mat-icon>
+              <input matInput placeholder="Inserisci Password"  style="color: black;"
+              [formControl]="PSWNPControl" type="password">
+          <mat-error  *ngIf="PSWNPControl.hasError('required')">Devi inseire la Password.</mat-error >
+          <mat-error  *ngIf="PSWNPControl.hasError('minlength')">La Password deve contenere almeno 8 caratteri.</mat-error >
+          </mat-form-field>
+          </div>
+
+          <div class="col-md-12 MMS">
+            <mat-form-field class="example-full-width" appearance="standard">
+              <mat-label style="color: black;">Conferma Password</mat-label>
+              <mat-icon matPrefix>vpn_key</mat-icon>
+              <input matInput placeholder="Conferma Password"  style="color: black;"
+              [formControl]="CPSWNPControl" type="password">
+                <mat-error *ngIf="CPSWNPControl.hasError('required')">>Devi confermare la Password.</mat-error>
+                <mat-error *ngIf="CPSWNPControl.invalid && !CPSWNPControl.hasError('required')">Password and Conferma Password devono coincidere.</mat-error>
+            </mat-form-field>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="modPSW()" [disabled]="!reactiveFormNP.valid">Modifica Password</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="NEWAVATAR" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLongTitle">Modifica Foto Profilo</h3>
+        <button #closeModalAvatar type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="col-md-12 MMS">
+
+          <label>Seleziona foto profilo:</label><br>
+        <!--  <div *ngIf="!isfile && !isfileOK" class="center"><img src="{{ src1}}" style="height: 33%;width: 33%;text-align: center;"></div>
+          <div *ngIf="isfile && !isfileOK" class="center"><img src="{{ src}}" style="height: 33%;width: 33%;"></div>
+          <div *ngIf="!isfile && isfileOK"><p style="font-size: small;">la foto deve essere 200x200 ed in formato jpg o png</p></div>
+          <input
+          formControlName="FILES"
+          id="file"
+          type="file"
+          class="form-control"
+          (change)="onFileSelected($event)">
+          <img [src]="croppedImage" />-->
+          <input type="file" (change)="fileChangeEvent($event)" accept="image/png, image/jpeg"/>
+
+          <image-cropper
+              [imageChangedEvent]="imageChangedEvent"
+              [maintainAspectRatio]="true"
+              [aspectRatio]="1 / 1"
+              format="png"
+              (imageCropped)="imageCropped($event)"
+              (imageLoaded)="imageLoaded()"
+              (cropperReady)="cropperReady()"
+              (loadImageFailed)="loadImageFailed()"
+          ></image-cropper>
+
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="modAvatar()" [disabled]="!isfileOK && !isfile">Modifica Foto</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="LOGIN" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="exampleModalLongTitle">Accedi</h1>
+        <button #closeModalL type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <form [formGroup]="reactiveFormLogin">
+
+            <mat-form-field class="example-full-width" appearance="standard">
+              <mat-label style="color: black;font-size: 22px;">E-Mail</mat-label>
+              <mat-icon matPrefix style="height: 22px;vertical-align: bottom;">mail</mat-icon>
+              <input matInput placeholder="Inserisci E-Mail"  style="color: black;font-size: 22px;"
+              [formControl]="MailLControl" type="email">
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="standard">
+              <mat-label style="color: black;font-size: 22px;">Password</mat-label>
+              <mat-icon matPrefix style="height: 22px;vertical-align: bottom;">vpn_key</mat-icon>
+              <input matInput placeholder="Inserisci Password"  style="color: black;font-size: 22px;"
+              [formControl]="PSWLControl" [type]="hide ? 'password' : 'text'">
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+              <mat-hint style="color: blue;font-size: 20px;cursor: pointer;" align="end"><a href="./forgot-password">Password dimenticata?</a></mat-hint>
+            </mat-form-field>
+        </form><br>
+        <div class="col-md-12 MMS">
+        <div class="center">
+
+        <button class="btn-toolset " #loginRef>
+          <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+
+          Login with Google
+        </button>
+      </div>
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="Login()">Login</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="REGISTER" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLongTitle">Registrazione</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" #closeModalR>
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="reactiveFormRegister">
+          <div class="col-md-12 MMS">
+
+            <label>Seleziona foto profilo:</label><br>
+          <!--  <div *ngIf="!isfile && !isfileOK" class="center"><img src="{{ src1}}" style="height: 33%;width: 33%;text-align: center;"></div>
+            <div *ngIf="isfile && !isfileOK" class="center"><img src="{{ src}}" style="height: 33%;width: 33%;"></div>
+            <div *ngIf="!isfile && isfileOK"><p style="font-size: small;">la foto deve essere 200x200 ed in formato jpg o png</p></div>
+            <input
+            formControlName="FILES"
+            id="file"
+            type="file"
+            class="form-control"
+            (change)="onFileSelected($event)">
+            <img [src]="croppedImage" />-->
+            <input type="file" (change)="fileChangeEvent($event)" accept="image/png, image/jpeg"/>
+
+            <image-cropper
+                [imageChangedEvent]="imageChangedEvent"
+                [maintainAspectRatio]="true"
+                [aspectRatio]="1 / 1"
+                format="png"
+                (imageCropped)="imageCropped($event)"
+                (imageLoaded)="imageLoaded()"
+                (cropperReady)="cropperReady()"
+                (loadImageFailed)="loadImageFailed()"
+            ></image-cropper>
+
+
+          </div>
+          <div class="col-md-12 MMS">
+            <mat-form-field class="example-full-width" appearance="standard">
+              <mat-label style="color: black;">Nome</mat-label>
+              <mat-icon matPrefix>account_circle</mat-icon>
+              <input matInput placeholder="Inserisci Cognome"  style="color: black;"
+              [formControl]="NomeControl" type="text">
+              <mat-error *ngIf="NomeControl.invalid && NomeControl.dirty">
+                Inserisci un Nome lungo almeno 3 caratteri
+              </mat-error>
+              <mat-error *ngIf="NomeControl.hasError('required')">
+                Nome &eacute; <strong>richiesto</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        <div class="col-md-12 MMS">
+          <mat-form-field class="example-full-width" appearance="standard">
+            <mat-label style="color: black;">Cognome</mat-label>
+            <mat-icon matPrefix>account_circle</mat-icon>
+            <input matInput placeholder="Inserisci Cognome"  style="color: black;"
+            [formControl]="CognomeControl" type="text">
+            <mat-error *ngIf="CognomeControl.invalid && CognomeControl.dirty">
+              Inserisci un cognome lungo almeno 3 caratteri
+            </mat-error>
+            <mat-error *ngIf="CognomeControl.hasError('required')">
+              Cognome &eacute; <strong>richiesto</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-12 MMS">
+          <mat-form-field class="example-full-width" appearance="standard">
+            <mat-label style="color: black;">Nickname</mat-label>
+            <mat-icon matPrefix>account_circle</mat-icon>
+            <input matInput placeholder="Inserisci Nickname"  style="color: black;"
+            [formControl]="NickControl" type="text">
+            <mat-error *ngIf="NickControl.invalid && NickControl.dirty">
+              Inserisci un Nickname lungo almeno 3 caratteri
+            </mat-error>
+            <mat-error *ngIf="NickControl.hasError('required')">
+              Nickname &eacute; <strong>richiesto</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-12 MMS">
+          <mat-form-field class="example-full-width" appearance="standard">
+            <mat-label style="color: black;">E-Mail</mat-label>
+            <mat-icon matPrefix>mail</mat-icon>
+            <input matInput placeholder="Inserisci E-Mail"  style="color: black;"
+            [formControl]="MailControl" type="email">
+            <mat-error *ngIf="MailControl.invalid && MailControl.dirty">
+              Inserisci un indirizzo valido
+            </mat-error>
+            <mat-error *ngIf="MailControl.hasError('required')">
+              E-Mail &eacute; <strong>richiesto</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-12 MMS">
+          <mat-form-field class="example-full-width" appearance="standard">
+            <mat-label style="color: black;">Password</mat-label>
+            <mat-icon matPrefix>vpn_key</mat-icon>
+            <input matInput placeholder="Inserisci Password"  style="color: black;"
+            [formControl]="PSWControl" type="password">
+            <mat-error  *ngIf="PSWControl.hasError('required')">Devi inseire la Password.</mat-error >
+            <mat-error  *ngIf="PSWControl.hasError('minlength')">La Password deve contenere almeno 8 caratteri.</mat-error >
+        </mat-form-field>
+        </div>
+
+        <div class="col-md-12 MMS">
+          <mat-form-field class="example-full-width" appearance="standard">
+            <mat-label style="color: black;">Conferma Password</mat-label>
+            <mat-icon matPrefix>vpn_key</mat-icon>
+            <input matInput placeholder="Conferma Password"  style="color: black;"
+            [formControl]="CPSWControl" type="password">
+            <mat-error *ngIf="CPSWControl.hasError('required')">>Devi confermare la Password.</mat-error>
+            <mat-error *ngIf="CPSWControl.invalid && !CPSWControl.hasError('required')">Password and Conferma Password devono coincidere.</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-12 MMS">
+
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Privacy</mat-label>
+            <textarea matInput readonly rows="7"> Il presente documento ha lo scopo di descrivere le modalità di gestione dei punti di accesso web, siti mobili e app 5cm, relativamente al trattamento dei dati personali degli utenti/visitatori che vi accedono previa registrazione, o che lo consultano.
+
+L’informativa, resa ai sensi dell’art. 13 D.Lgs. 196/2003 - Codice in materia di protezione dei dati personali - riguarda coloro che si collegano ai punti di accesso sopra indicati, ad esclusione di contenuti di terze parti eventualmente consultati dall’utente tramite appositi link.
+5cm garantisce il rispetto della normativa in materia di protezione dei dati personali (D.Lgs 196/03)
+
+Gli utenti/visitatori dovranno leggere attentamente la presente Privacy Policy prima di inoltrare qualsiasi tipo di informazione personale e/o compilare qualunque modulo elettronico presente sui punti di accesso sopra citati.
+
+TIPI DI DATI TRATTATI
+
+- Profili
+Per poter usufruire dei servizi offerti dall'Area Clienti, bisogna registrarsi compilando l'apposito form di registrazione.
+Username e password o il proprio profilo Google, costituiranno le modalit‡ di accesso ai servizi offerti dall'Area Clienti.
+Il conferimento dei dati personali indicati nel suddetto form Ë obbligatorio per completare la procedura di registrazione; pertanto il mancato, parziale o errato inserimento di tali dati invalida l'iscrizione e quindi non consentir‡ di poter usufruire dei servizi stessi.
+
+- Dati di navigazione
+I sistemi informatici e le procedure software preposte al funzionamento di questo portale acquisiscono, nel loro normale esercizio e per la sola durata della connessione, alcuni dati personali la cui trasmissione avviene implicitamente nell'utilizzo dei protocolli di comunicazione Internet. Tali informazioni non vengono raccolte con lo scopo di associarle agli interessati identificati ma, per loro stessa natura, potrebbero, attraverso elaborazioni ed associazioni con dati detenuti da terzi, permettere di identificare gli utenti visitatori (ad es. indirizzi IP), i nomi di dominio dei terminali utilizzati, gli indirizzi in notazione URI (Uniform Resource Identifier) dei richiedenti, l'orario delle richieste, ecc.
+Questi dati, cancellati immediatamente dopo l'elaborazione, vengono utilizzati al solo scopo di ricavare informazioni statistiche anonime sull'uso del sito e per controllarne il corretto funzionamento.
+I dati sui contatti web non vengono conservati per pi˘ di sette giorni, salvo eventuali reati informatici ai danni dei siti.
+Nessun dato derivante dal servizio verr‡ comunicato o diffuso.Dati forniti volontariamente dall'utente
+L'invio facoltativo, esplicito e volontario, di propri dati personali per accedere a determinati servizi, ovvero per effettuare richieste tramite posta elettronica, comporta la successiva acquisizione da parte di GM Distribution s.r.l. a socio unico dell'indirizzo del mittente o di altri eventuali dati personali che verranno trattati esclusivamente per rispondere alla richiesta o per la fornitura del servizio.
+
+- Cookies (web e siti mobili)
+I punti di accesso web e siti mobili non prevedono mai l'utilizzo di cookies per la trasmissione di informazioni di carattere personale, nÈ vengono utilizzati c.d. cookies persistenti di alcun tipo, ovvero sistemi per il tracciamento degli utenti.
+Vengono adoperati esclusivamente i c.d. cookies di sessione che non vengono memorizzati in modo permanente sul terminale dell'utente, ma svaniscono con la chiusura del browser di navigazione.
+Il loro utilizzo Ë strettamente limitato alla trasmissione di identificativi di sessione (costituiti da numeri casuali generati dai server che permettono di riconoscere l'utente automaticamente) necessari per consentire una navigazione sicura ed efficiente delle pagine.
+Il cookie di sessione puÚ permanere sul terminale dell'utente per un massimo di 15 giorni nel caso in cui lo stesso abiliti volontariamente la funzione c.d. remember me.
+I cookies di sessione utilizzati evitano il ricorso ad altre tecniche informatiche potenzialmente pregiudizievoli per la riservatezza della navigazione degli utenti e non consentono l'acquisizione di dati personali identificativi dell'utente.
+Ad ogni modo l'utente puÚ configurare il proprio browser web definendo un appropriato livello di restrizione/protezione sui cookies, eliminandoli manualmente, disabilitandoli e/o bloccandoli permanentemente o infine limitando la ricezione degli stessi in funzione del dominio di provenienza.
+
+FACOLTATIVITA' DEL CONFERIMENTO DEI DATI
+A parte quanto specificato per i dati di navigazione, gli utenti/visitatori sono liberi di fornire i propri dati personali. Il loro mancato conferimento puÚ comportare unicamente l'impossibilit‡ di ottenere quanto richiesto.
+
+MODALITA' DEL TRATTAMENTO
+I dati personali acquisiti, sono trattati attraverso l'uso di strumenti automatizzati e/o manualmente e solamente per il tempo strettamente necessario a conseguire gli scopi per i quali i dati medesimi sono stati raccolti.
+
+GM Distribution s.r.l. a socio unico osserva, comunque, le disposizioni normative vigenti al fine di prevenire la perdita dei dati, usi illeciti o non corretti ed accessi non autorizzati.
+
+DIRITTI DEGLI INTERESSATI
+I soggetti cui si riferiscono i dati hanno il diritto, ai sensi dell'art. 7 D.Lgs 196/2003, di ottenere in qualunque momento, la conferma dell'esistenza o meno dei propri dati personali, di conoscerne il contenuto e l'origine, verificarne l'esattezza o chiederne l'integrazione o l'aggiornamento o la rettifica.
+Ai sensi del medesimo articolo si ha il diritto di chiedere la cancellazione, la trasformazione in forma anonima o il blocco dei dati trattati in violazione di legge, di opporsi in ogni caso, per motivi legittimi, al loro trattamento.</textarea>
+          </mat-form-field>
+        </div>
+        <div class="form-group form-check">
+          <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && AControl.errors }" />
+          <label for="acceptTerms" class="form-check-label">Accept Terms & Conditions</label>
+          <div *ngIf="submitted && AControl.errors" class="invalid-feedback">Accept Ts & Cs is required</div>
+        </div>
+      </form>
+      <div class="col-md-12 MMS alert alert-danger" *ngIf="errR">{{errore}}</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary"[disabled]="!reactiveFormRegister.valid" (click)="Registrati()">Registrati</button>
+      </div>
+    </div>
+  </div>
+</div>

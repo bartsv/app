@@ -1,0 +1,355 @@
+.inputs {
+      min-width: 150px;
+      width: 100%;
+      max-width: 556px;
+      padding: 6px;
+      margin-bottom: 7px;
+      box-sizing: border-box;
+      font-size: 18px;
+      padding-left:28px;
+      margin-left: 3px;
+     }
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  .search{
+    font-size: 25px;
+    color: black;
+  }
+  .example-full-width {
+    width: 100%;
+  }
+
+     .Icon-inside {
+      position:relative;
+     }
+
+     .Icon-inside i {
+      position:absolute;
+      left:3px;
+      top:1px;
+      padding:10px 10px;
+      color:#30A3F1;
+     }
+     .Icon-outside {
+      position:relative;
+     }
+     .white-icon {
+      vertical-align: middle;
+      color: white;
+  }
+     .Icon-outside i {
+      position:absolute;
+      margin-left:-6px;
+      top:4px;
+      padding:17px 15px;
+      color:#30A3F1;
+      background:black;
+     }
+     .example-form {
+      min-width: 150px;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    mat-form-field.mat-form-field {
+      font-size: 17px;
+    }
+    ::ng-deep .mat-form-field .mat-input-element {
+        color: slategray;
+    }
+    ::ng-deep .mat-form-field .mat-form-field-label {
+        color: slategray!important;
+    }
+    ::ng-deep .mat-form-field .mat-form-field-underline {
+        background-color: slategray;
+    }
+    ::ng-deep .mat-form-field .mat-form-field-ripple {
+        background-color: slategray;
+    }
+    ::ng-deep .mat-form-field .mat-form-field-required-marker {
+        color: slategray;
+    }
+
+
+    ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+      color: #ff884d!important;
+  }
+  ::ng-deep .mat-form-field.mat-focused .mat-form-field-ripple {
+      background-color: #ff884d;
+  }
+  ::ng-deep .mat-form-field.mat-focused .mat-form-field-required-marker {
+      color: #ff884d;
+  }
+  ::ng-deep .mat-form-field.mat-focused .mat-input-element {
+      color: #ff884d;
+  }
+
+  ::ng-deep .mat-form-field.mat-focused-valid .mat-form-field-label {
+      color: #4dff4d!important;
+  }
+  ::ng-deep .mat-form-field.mat-focused-valid .mat-form-field-ripple {
+      background-color: #4dff4d;
+  }
+  ::ng-deep .mat-form-field.mat-focused-valid .mat-form-field-required-marker {
+      color: #4dff4d;
+  }
+  ::ng-deep .mat-form-field.mat-focused-valid .mat-input-element {
+      color: #4dff4d;
+  }
+
+
+
+    ::ng-deep .mat-form-field.mat-form-field-invalid .mat-input-element {
+      color: red;
+  }
+  ::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-label {
+      color: red!important;
+  }
+  ::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-label .mat-form-field-required-marker {
+      color: red;
+  }
+  ::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-ripple {
+      background-color:red;
+  }
+
+  ::ng-deep .mat-form-field.mat-form-field-valid .mat-input-element {
+      color: greenyellow;
+  }
+  ::ng-deep .mat-form-field.mat-form-field-valid .mat-form-field-label {
+      color: greenyellow!important;
+      ::ng-deep .mat-form-field.mat-form-field-valid .mat-form-field-label .mat-form-field-required-marker {
+        color: greenyellow;
+      }
+      ::ng-deep .mat-form-field.mat-form-field-valid .mat-form-field-ripple {
+      background-color:greenyellow;
+  }
+
+    .example-full-width {
+      width: 100%;
+  }
+    }
+  .modal-lg {
+      max-width: 80% !important;
+  }
+  .MM{
+    margin-top: 7px;
+  }
+  .MMv{
+    margin-top: 6px;
+    min-width:1230px;
+    width: 100% !important;
+  }
+  .MMM{
+    margin-right: 5px;
+    margin-top: 7px;
+  }
+  .MMS{
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  .fa-search {
+    color: rgb(255, 255, 255);
+  }
+  .na{
+    top: 0px;
+    left: 0;
+    right: 0;
+    position: absolute;
+  }
+  .input-wrapper {
+      display:inline-block;
+      position: relative
+  }
+
+  .icon-rtl {
+    background: url(data:image/png;base64,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) no-repeat scroll 7px 7px;
+padding-left:20px;
+  }
+  .input-wrapper:after {
+      font-family: 'FontAwesome';
+      content: '\f274';
+      position: absolute;
+      right: 6px;
+  }
+  .center {
+    text-align: center;
+  }
+  @media screen and (max-width: 540px) {
+      .view {
+          width: 400px;
+      }
+      .divsearch{
+      top: 56px;
+
+      height: 33px;
+        width: 18%;
+        position: absolute;
+        left: 31%;
+        bottom: 0;
+        background-color: rgb(250, 250, 250);
+        z-index: 1000
+      }
+  }
+
+/* For Tablets */
+@media screen and (min-width: 540px) and (max-width: 780px) {
+  .view {
+      width: 600px;
+  }
+  .divsearch{
+  top: 56px;
+
+  height: 33px;
+    position: absolute;
+    left: 44%;
+    bottom: 0;
+    background-color: rgb(250, 250, 250);
+    z-index: 1000
+  }
+}
+/* For Tablets */
+@media screen and (min-width: 780px) and (max-width: 1280px) {
+  .view {
+      width: 600px;
+  }
+  .divsearch{
+  top: 56px;
+    width: auto;
+  height: 33px;
+    position: absolute;
+    left: 36%;
+    bottom: 0;
+    background-color: rgb(250, 250, 250);
+    z-index: 1000
+  }
+}
+.btn-toolset {
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+  color: #141414;
+  text-decoration: none;
+  line-height: 1.2;
+  font-weight: normal;
+  font-family: sans-serif;
+  font-size: 18px;
+  background-color: #FFFFFF;
+  border-radius: 30px;
+  padding: 10px 20px;
+  border: 1px solid #005ABA;
+  cursor: pointer;
+ }
+ .btn-toolset:hover {
+  background-color: #0063CC;
+  border-color: #0056B3;
+ }
+ .btn-toolset > strong {
+  font-size: 24px;
+ }
+ .ttt {
+   overflow: hidden;
+   background-color: #e9e9e9;
+
+ }
+
+ .navbar a {
+  float: right;
+  display: block;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.link {
+  float: right;
+  padding: 6px 10px;
+  display: block;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  font-size: 17px;
+}
+.navbar p {
+  float: left;
+  display: block;
+  color: black;
+  text-align:left;
+  margin-right: 10px;
+  margin-top: 15px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+ .navbar a:hover {
+   background-color: #ddd;
+   color: black;
+ }
+
+ .navbar a.active {
+   background-color: #2196F3;
+   color: white;
+ }
+
+ .navbar .search-container {
+  float: left;
+}
+.navbar .logo {
+  margin-top: 0;
+  float: left;
+}
+
+ .navbar input[type=text] {
+   padding: 4px;
+   margin-top: 3px;
+   font-size: 17px;
+   border: none;
+ }
+
+ .navbar .search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 3px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.navbar .logo img {
+  height: 25px;
+  width: 25px;
+  border: none;
+  cursor: pointer;
+}
+
+ .navbar .search-container button:hover {
+   background: #ccc;
+ }
+
+
+.avatar{
+  top: 0;
+  margin-top: 2px;width: 25px;height: 25px;margin-right: 2px;
+}
+
+ @media screen and (max-width: 600px) {
+   .navbar .search-container {
+     float: none;
+   }
+   .navbar a, .navbar input[type=text], .navbar .search-container button {
+     float: none;
+     display: block;
+     text-align: left;
+     width: 100%;
+     margin: 0;
+     padding: 14px;
+   }
+   .navbar input[type=text] {
+     border: 1px solid #ccc;
+   }
+ }

@@ -1,0 +1,361 @@
+<div class="map-container" style="width: {{screenWidth}}px;height: {{screenHeight}}px;">
+  <div class="map-frame">
+    <div id="map"></div>
+  </div>
+</div><!-- Button trigger modal  style="width: {{screenWidth}}px;height: {{screenHeight+10}}px;-->
+<button type="button" class="btn btn-primary" hidden #buttonToBeClicked data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+<button type="button" class="btn btn-primary" hidden #buttonToBeClickedMod data-toggle="modal" data-target="#exampleModalM">
+  Launch demo modal
+</button>
+<button type="button" class="btn btn-primary" hidden #buttonToBeClickedComment data-toggle="modal" data-target="#CommentModal">
+  Launch demo modal
+</button>
+<!--Modal Add Point-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel">{{nome}}</h4>
+        <button type="button" class="close" data-dismiss="modal" #buttonToBeClickedAddP aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body"  >
+        <form validate  [formGroup]="reactiveFormInfoCard">
+          <div class="form-group row" >
+            <mat-form-field class="example-full-width" appearance="standard">
+              <mat-label style="color: black;">Indirizzo</mat-label>
+              <input matInput placeholder="Inserisci Indirizzo"  style="color: black;" #reg
+              [formControl]="ADRESSControl" type="text">
+              <mat-error *ngIf="ADRESSControl.hasError('required')">
+                * Campo obbligatorio
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form-group row" >
+            <div class="col-sm-8">
+              <mat-form-field class="example-full-width" appearance="standard">
+                <mat-label style="color: black;">Citt&aacute;</mat-label>
+                <input matInput placeholder="Inserisci Citt&aacute;"  style="color: black;" #reg
+                [formControl]="CITTAControl" type="text">
+                <mat-error *ngIf="CITTAControl.hasError('required')">
+                  * Campo obbligatorio
+                </mat-error>
+              </mat-form-field>
+          </div>
+            <div class="col-sm-4">
+              <mat-form-field class="example-full-width" appearance="standard">
+                <mat-label style="color: black;">Nazione</mat-label>
+                <input matInput placeholder="Inserisci Nazione"  style="color: black;" #reg
+                [formControl]="COUNTRYControl" type="text">
+                <mat-error *ngIf="COUNTRYControl.hasError('required')">
+                  * Campo obbligatorio
+                </mat-error>
+              </mat-form-field>
+           </div>
+          </div>
+        <div class="form-group row" >
+          <mat-form-field class="example-full-width" appearance="standard">
+            <mat-label style="color: black;">Telefono</mat-label>
+            <input matInput placeholder="Inserisci Telefono"  style="color: black;" #reg
+            [formControl]="PHONEControl" type="text">
+          </mat-form-field>
+        </div>
+        <div class="form-group row" >
+          <mat-form-field class="example-full-width" appearance="standard">
+            <mat-label style="color: black;">Website</mat-label>
+            <input matInput placeholder="Inserisci Website"  style="color: black;" #reg
+            [formControl]="WControl" type="text">
+          </mat-form-field>
+        </div>
+
+            <div class="form-group row">
+              <mat-form-field class="demo-full-width" appearance="standard">
+                <mat-label  style="color: black;">Seleziona Accessibilit&aacute;</mat-label>
+                <select matNativeControl [formControl]="FonteControl" >
+                  <option value="gr" selected></option>
+                  <option *ngFor="let C of Fonti" [value]="C.val">{{ C.nome }}</option>
+                </select>
+            <mat-error *ngIf="FonteControl.hasError('required')">Devi selezionare un valore</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <label for="acess">Accessibilit&aacute;:</label>
+
+          <p style="text-align: center;">
+            <img src="{{Rampa}}" height="50px" class="MMS" (click)="AddAccess('rampa')">
+            <img src="{{Ascensore}}" height="50px" class="MMS" (click)="AddAccess('ascensore')">
+            <img src="{{MMScale}}" height="50px" class="MMS" (click)="AddAccess('montascale')">
+            <img src="{{WC}}" height="50px" class="MMS" (click)="AddAccess('wc')">
+            <img src="{{Parking}}" height="50px" class="MMS" (click)="AddAccess('parking')">
+          </p>
+        </div>
+
+        <div class="form-group">
+          <label>Seleziona foto Ingresso:</label>
+          <input type="file" (change)="fileChangeEvent($event)" accept="image/png, image/jpeg"/>
+
+          <image-cropper
+              [imageChangedEvent]="imageChangedEvent"
+              [maintainAspectRatio]="true"
+              [aspectRatio]="16 / 9"
+              format="png"
+              (imageCropped)="imageCropped($event)"
+              (imageLoaded)="imageLoaded()"
+              (cropperReady)="cropperReady()"
+              (loadImageFailed)="loadImageFailed()"
+          ></image-cropper>
+
+
+        </div>
+        <div class="form-group row">
+          <label>Recensione:</label>
+          <p style="text-align: center;">
+            <img src="{{RankAdd1}}" height="25px" class="MMS" (mouseover)="changeAddR1()">
+            <img src="{{RankAdd2}}" height="25px" class="MMS" (mouseover)="changeAddR2()">
+            <img src="{{RankAdd3}}" height="25px" class="MMS" (mouseover)="changeAddR3()">
+            <img src="{{RankAdd4}}" height="25px" class="MMS" (mouseover)="changeAddR4()">
+            <img src="{{RankAdd5}}" height="25px" class="MMS" (mouseover)="changeAddR5()">
+          </p>
+          <mat-form-field class="example-full-width" appearance="standard">
+            <mat-label  style="color: black;">Inserisci un commento</mat-label>
+            <textarea matInput placeholder="Ex. It makes me feel..." style="color: black;" [formControl]="CommentoControl"  rows="4"></textarea>
+          </mat-form-field>
+          </div>
+         </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <span *ngIf="RankAdd>0 && reactiveFormInfoCard.valid">
+        <button type="button" class="btn btn-primary" (click)="AddPoint()">Save changes</button>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Modal Mod Point-->
+<div class="modal fade" id="exampleModalM" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel">{{nome}}</h4>
+        <button type="button" class="close" data-dismiss="modal" #buttonToBeClickedMP aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body"  >
+        <form validate  [formGroup]="reactiveFormInfoMCard">
+          <div class="form-group row" >
+            <mat-form-field class="example-full-width" appearance="standard">
+              <mat-label style="color: black;">Indirizzo</mat-label>
+              <input matInput placeholder="Inserisci Indirizzo"  style="color: black;" #reg
+              [formControl]="ADRESSMControl" type="text">
+              <mat-error *ngIf="ADRESSMControl.hasError('required')">
+                * Campo obbligatorio
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form-group row" >
+            <div class="col-sm-8">
+              <mat-form-field class="example-full-width" appearance="standard">
+                <mat-label style="color: black;">Citt&aacute;</mat-label>
+                <input matInput placeholder="Inserisci Citt&aacute;"  style="color: black;" #reg
+                [formControl]="CITTAMControl" type="text">
+                <mat-error *ngIf="CITTAMControl.hasError('required')">
+                  * Campo obbligatorio
+                </mat-error>
+              </mat-form-field>
+          </div>
+            <div class="col-sm-4">
+              <mat-form-field class="example-full-width" appearance="standard">
+                <mat-label style="color: black;">Nazione</mat-label>
+                <input matInput placeholder="Inserisci Nazione"  style="color: black;" #reg
+                [formControl]="COUNTRYMControl" type="text">
+                <mat-error *ngIf="COUNTRYMControl.hasError('required')">
+                  * Campo obbligatorio
+                </mat-error>
+              </mat-form-field>
+           </div>
+          </div>
+        <div class="form-group row" >
+          <mat-form-field class="example-full-width" appearance="standard">
+            <mat-label style="color: black;">Telefono</mat-label>
+            <input matInput placeholder="Inserisci Telefono"  style="color: black;" #reg
+            [formControl]="PHONEMControl" type="text">
+          </mat-form-field>
+        </div>
+        <div class="form-group row" >
+          <mat-form-field class="example-full-width" appearance="standard">
+            <mat-label style="color: black;">Website</mat-label>
+            <input matInput placeholder="Inserisci Website"  style="color: black;" #reg
+            [formControl]="WMControl" type="text">
+          </mat-form-field>
+        </div>
+
+            <div class="form-group row">
+              <mat-form-field class="demo-full-width" appearance="standard">
+                <mat-label  style="color: black;">Seleziona Accessibilit&aacute;</mat-label>
+                <select matNativeControl [formControl]="FonteMControl" >
+                  <option value="gr" selected></option>
+                  <option *ngFor="let C of Fonti" [value]="C.val">{{ C.nome }}</option>
+                </select>
+            <mat-error *ngIf="FonteMControl.hasError('required')">Devi selezionare un valore</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <label for="acess">Accessibilit&aacute;:</label>
+
+          <p style="text-align: center;">
+            <img src="{{Rampa}}" height="50px" class="MMS" (click)="AddAccessM('rampa')">
+            <img src="{{Ascensore}}" height="50px" class="MMS" (click)="AddAccessM('ascensore')">
+            <img src="{{MMScale}}" height="50px" class="MMS" (click)="AddAccessM('montascale')">
+            <img src="{{WC}}" height="50px" class="MMS" (click)="AddAccessM('wc')">
+            <img src="{{Parking}}" height="50px" class="MMS" (click)="AddAccessM('parking')">
+          </p>
+        </div>
+
+        <div class="form-group">
+          <label>Seleziona foto Ingresso:</label>
+          <input type="file" (change)="fileChangeEvent($event)" accept="image/png, image/jpeg"/>
+
+          <image-cropper
+              [imageChangedEvent]="imageChangedEvent"
+              [maintainAspectRatio]="true"
+              [aspectRatio]="16 / 9"
+              format="png"
+              (imageCropped)="imageCropped($event)"
+              (imageLoaded)="imageLoaded()"
+              (cropperReady)="cropperReady()"
+              (loadImageFailed)="loadImageFailed()"
+          ></image-cropper>
+
+
+        </div>
+         </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <span *ngIf="reactiveFormInfoMCard.valid">
+        <button type="button" class="btn btn-primary" (click)="modPoint()">Save changes</button>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal
+<div *ngIf="isShown" class = "overlay" tabindex="-1" style="height: {{screenHeight}}px;" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+       <div class="modal-header">
+        <h6 class="modal-title"><img class="logo" src="{{icon}}"> {{nome}}</h6>
+        <button type="button"  (click)="Closa()" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="isCalendario==1">
+          <ul class="nav justify-content-center">
+            <li class="nav-item active">
+              <a class="nav-link pointer navs" (click)="getDetail()" ><i class="fas fa-clipboard"></i> Dettagli</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pointer" (click)="getPhoto()"><i class="fas fa-camera"></i> Photo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link  pointer" (click)="getCommenti()"><i class="fas fa-comment"></i> Commenti</a>
+            </li>
+          </ul>
+        <app-detail></app-detail>
+        </div>
+        <div *ngIf="isCalendario==2">
+          <ul class="nav justify-content-center">
+            <li class="nav-item active">
+              <a class="nav-link  pointer" (click)="getDetail()"><i class="fas fa-clipboard"></i> Dettagli</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link  pointer navs" (click)="getPhoto()"><i class="fas fa-camera"></i> Photo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link  pointer" (click)="getCommenti()"><i class="fas fa-comment"></i> Commenti</a>
+            </li>
+          </ul>
+        <app-photo></app-photo>
+        </div>
+        <div *ngIf="isCalendario==3">
+          <ul class="nav justify-content-center">
+            <li class="nav-item active">
+              <a class="nav-link  pointer" (click)="getDetail()"><i class="fas fa-clipboard"></i> Dettagli</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link  pointer" (click)="getPhoto()"><i class="fas fa-camera"></i> Photo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link  pointer navs" (click)="getCommenti()"><i class="fas fa-comment"></i> Commenti</a>
+            </li>
+          </ul>
+        <app-commenti></app-commenti>
+        </div>
+        </div>
+
+</div>-->
+<div class = "overlay" style="height: {{screenHeight}}px;">
+
+  <div style="height: 37px;background-color: white;position: static;left: 0;">
+        <img class="logo" src="{{icon}}">
+        <p class="nomelocale" >{{nome}}</p>
+        <a (click)="Closa()" class="close"></a>
+      </div>
+      <div style="height: 111px;background-color: bisque;position: static;left: 0;">
+        <ul class="nav justify-content-center">
+          <li class="nav-item active">
+            <a class="nav-link  pointer" (click)="getDetail()"><i class="fas fa-clipboard"></i> Dettagli</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link  pointer" (click)="getPhoto()"><i class="fas fa-camera"></i> Photo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link  pointer navs" (click)="getCommenti()"><i class="fas fa-comment"></i> Commenti</a>
+          </li>
+        </ul>
+      </div>
+</div>
+<!-- Modal Add Commet-->
+<div class="modal fade" id="CommentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Aggiungi commento per {{nome}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form validate  [formGroup]="reactiveFormAddC">
+        <div class="form-group">
+          <label>Recensione:</label>
+          <p style="text-align: center;">
+            <img src="{{RankAdd1C}}" height="25px" class="MMS" (mouseover)="changeAddR1C()">
+            <img src="{{RankAdd2C}}" height="25px" class="MMS" (mouseover)="changeAddR2C()">
+            <img src="{{RankAdd3C}}" height="25px" class="MMS" (mouseover)="changeAddR3C()">
+            <img src="{{RankAdd4C}}" height="25px" class="MMS" (mouseover)="changeAddR4C()">
+            <img src="{{RankAdd5C}}" height="25px" class="MMS" (mouseover)="changeAddR5C()">
+          </p>
+          <mat-form-field class="example-full-width" appearance="standard">
+            <mat-label  style="color: black;">Inserisci un commento</mat-label>
+            <textarea matInput placeholder="Ex. It makes me feel..." style="color: black;" [formControl]="CommentoControl"  rows="4"></textarea>
+          </mat-form-field>
+        </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <span *ngIf="RankAddC>0 && reactiveFormAddC.valid">
+        <button type="button" class="btn btn-primary" (click)="AddComment()">Salva Commento</button>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

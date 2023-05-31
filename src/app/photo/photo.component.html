@@ -1,0 +1,34 @@
+<div>
+<div class="scroll" >
+      <button class="myButton" *ngIf="LoginOK" (click)="showDiv()">
+        Aggiungi Foto
+      </button>
+      <div *ngIf="AddPhoto">
+        <form [formGroup]="reactiveFormAddPhoto">
+        <div class="form-group">
+          <label>Seleziona foto:</label>
+          <input type="file" (change)="fileChangeEvent($event)" accept="image/png, image/jpeg"/>
+
+          <image-cropper
+              [imageChangedEvent]="imageChangedEvent"
+              [maintainAspectRatio]="true"
+              [aspectRatio]="1 / 1"
+              format="png"
+              (imageCropped)="imageCropped($event)"
+              (imageLoaded)="imageLoaded()"
+              (cropperReady)="cropperReady()"
+              (loadImageFailed)="loadImageFailed()"
+          ></image-cropper>
+
+
+      <button class="uploadButton" (click)="Upload()">
+        Upload Foto
+      </button>
+        </div>
+        </form>
+      </div>
+<div *ngFor="let student of image" class="form-group">
+  <img src="{{student}}" class="MMS" style="width:100% ;"/><br>
+</div>
+</div>
+</div>
