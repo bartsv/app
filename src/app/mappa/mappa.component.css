@@ -177,6 +177,7 @@ input[type="checkbox"] {
   width: 80%; /* Could be more or less, depending on screen size */
 }
 .modal-headers {
+  position: relative;
   padding:2px 3px;
   margin-top: 1rem;
   height: 44px;
@@ -189,17 +190,32 @@ input[type="checkbox"] {
    border-top-left-radius: 5px;
    border-top-right-radius: 5px;
 }
+#menu-ita {
+  margin: 10px auto auto auto;
+  text-align: center;
+  }
 
+  #menu-ita ul {
+  border-bottom: 2px solid #8e7f67;
+  margin: 0 auto;
+  padding: 0 0 10px 0;
+  list-style: none;
+  font-size: 15px;
+  }
+
+  #menu-ita ul li {
+  display: inline;
+  }
+
+  #menu-ita ul li a {
+  padding: 5px 10px 5px 10px;
+  }
 /* Modal Body */
 .modal-bodys {
   position: relative;
   -webkit-box-flex: 1;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
-  padding-left: 4px;
-  padding-right: 4px;
-  padding-top: 4px;
-  padding-bottom: 2px;
 }
 
 mat-form-field.mat-form-field {

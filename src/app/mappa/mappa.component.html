@@ -308,17 +308,18 @@
         <a (click)="Closa()" class="close"></a>
       </div>
       <div  class="modal-bodys">
-        <div *ngIf="isCalendario==1">
-          <ul class="nav justify-content-center">
-            <li class="nav-item active">
-              <a class="nav-link pointer navs" (click)="getDetail()" ><i class="fa fa-clipboard"></i> Dettagli</a>
+        <div *ngIf="isCalendario==1" id="menu-ita">
+            <ul class="nav justify-content-center" >
+            <li class="nav-item active" style="display: inline;">
+              <a class="nav-link pointer navs"  (click)="getDetail()" ><i class="fa fa-clipboard"></i> Dettagli</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" style="display: inline;">
               <a class="nav-link pointer" (click)="getPhoto()"><i class="fa fa-camera"></i> Photo</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" style="display: inline;">
               <a class="nav-link  pointer" (click)="getCommenti()"><i class="fa fa-comment"></i> Commenti</a>
             </li>
+
           </ul>
         <app-detail></app-detail>
         </div>
