@@ -135,11 +135,11 @@ modPSW(){
         this.CPSWControl = this.reactiveFormRegister.get('confirm_password');
         this.AControl = this.reactiveFormRegister.get('acceptTerms');
         this.reactiveFormLogin = this.formBuilder.group({
-          Mail:['',[Validators.required]],
-          password :['',[Validators.required,Validators.minLength(8)]],
+          MailL:['',[Validators.required]],
+          passwordL :['',[Validators.required,Validators.minLength(8)]],
         })
-        this.MailLControl = this.reactiveFormLogin.get('Mail');
-        this.PSWLControl = this.reactiveFormLogin.get('password');
+        this.MailLControl = this.reactiveFormLogin.get('MailL');
+        this.PSWLControl = this.reactiveFormLogin.get('passwordL');
         this.reactiveFormNP = this.formBuilder.group({
           Nome:['',[Validators.required,Validators.maxLength(50),Validators.minLength(3),Validators.pattern("[a-zA-Z]*")]],
           Cognome:['',[Validators.required,Validators.maxLength(50),Validators.minLength(3),Validators.pattern("[a-zA-Z]*")]],

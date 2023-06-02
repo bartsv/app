@@ -254,45 +254,50 @@
 
 
 <div class="modal fade" id="LOGIN" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="container py-5 h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-          <div class="card shadow-2-strong" style="border-radius: 1rem;">
-            <div class="card-body p-5 text-center">
 
-              <h2 class="mb-5">Accedi</h2>
-
-              <div class="form-outline mb-4">
-                <label class="form-label" for="typeEmailX-2">Email</label>
-                <input type="email" id="typeEmailX-2" class="form-control form-control-lg" />
-              </div>
-
-              <div class="form-outline mb-4">
-                <label class="form-label" for="typePasswordX-2">Password</label>
-                <input type="password" id="typePasswordX-2" class="form-control form-control-lg" />
-              </div>
-
-              <!-- Checkbox -->
-              <div class="form-check d-flex justify-content-start mb-4">
-                <input class="form-check-input" type="checkbox" value="" id="form1Example3" />
-                <label class="form-check-label" for="form1Example3"> Remember password </label>
-              </div>
-
-              <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
-
-              <hr class="my-4">
-
-              <button class="btn btn-lg btn-block btn-primary" style="background-color: #dd4b39;"
-                type="submit"><i class="fab fa-google me-2"></i> Sign in with google</button>
-
-            </div>
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header border-bottom-0">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" #closeModalL   >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-title text-center">
+            <h2>Accedi</h2>
           </div>
+          <div class="d-flex flex-column text-center">
+            <form novalidate [formGroup]="reactiveFormLogin">
+              <div class="form-group">
+                <input type="email" class="form-control" formControlName="MailL" id="email1"placeholder="Your email address...">
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" formControlName="passwordL" id="password1" placeholder="Your password...">
+              </div>
+              <button type="button" class="btn btn-primary btn-lg btn-block" (click)="Login()">Login</button>
+            </form>
+
+
+            <hr class="my-4">
+
+            <button class="btn btn-lg btn-block btn-primary" style="background-color: #dd4b39;" (click)="callLoginButton()"
+              type="submit"><i class="fa fa-google me-2"></i> Sign in with google</button>
         </div>
       </div>
+        <div class="modal-footer d-flex justify-content-center">
+
+
+        </div>
     </div>
   </div>
-</div>
+
+
+
+  </div>
+
+
+
+
 <div class="modal fade" id="REGISTER" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
