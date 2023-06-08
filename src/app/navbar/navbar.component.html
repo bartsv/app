@@ -107,9 +107,9 @@
 
 
 <div class="modal fade" id="NEWPSW" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog mod" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header border-bottom-0">
         <h3 class="modal-title" id="exampleModalLongTitle">Modifica Password</h3>
         <button #closeModalMP type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -118,83 +118,92 @@
       <div class="modal-body">
 
         <form [formGroup]="reactiveFormNP">
-          <div class="col-md-12 MMS">
-            <mat-form-field class="example-full-width" appearance="standard">
-              <mat-label style="color: black;">Nome</mat-label>
-              <mat-icon matPrefix>account_circle</mat-icon>
-              <input matInput placeholder="Inserisci Cognome"  style="color: black;"
-              [formControl]="NomeMPControl" type="text">
-              <mat-error *ngIf="NomeMPControl.invalid && NomeControl.dirty">
-                Inserisci un Nome lungo almeno 3 caratteri
-              </mat-error>
-              <mat-error *ngIf="NomeMPControl.hasError('required')">
-                Nome &eacute; <strong>richiesto</strong>
-              </mat-error>
-            </mat-form-field>
-          </div>
-        <div class="col-md-12 MMS">
-          <mat-form-field class="example-full-width" appearance="standard">
-            <mat-label style="color: black;">Cognome</mat-label>
-            <mat-icon matPrefix>account_circle</mat-icon>
-            <input matInput placeholder="Inserisci Cognome"  style="color: black;"
-            [formControl]="CognomeMPControl" type="text">
-            <mat-error *ngIf="CognomeMPControl.invalid && CognomeControl.dirty">
-              Inserisci un cognome lungo almeno 3 caratteri
-            </mat-error>
-            <mat-error *ngIf="CognomeMPControl.hasError('required')">
-              Cognome &eacute; <strong>richiesto</strong>
-            </mat-error>
-          </mat-form-field>
-        </div>
-        <div class="col-md-12 MMS">
-          <mat-form-field class="example-full-width" appearance="standard">
-            <mat-label style="color: black;">Nickname</mat-label>
-            <mat-icon matPrefix>account_circle</mat-icon>
-            <input matInput placeholder="Inserisci Nickname"  style="color: black;"
-            [formControl]="NickMPControl" type="text">
-            <mat-error *ngIf="NickMPControl.invalid && NickControl.dirty">
-              Inserisci un Nickname lungo almeno 3 caratteri
-            </mat-error>
-            <mat-error *ngIf="NickMPControl.hasError('required')">
-              Nickname &eacute; <strong>richiesto</strong>
-            </mat-error>
-          </mat-form-field>
-        </div>
-          <div class="col-md-12 MMS">
-            <mat-form-field class="example-full-width" appearance="standard">
-              <mat-label style="color: black;">E-Mail</mat-label>
-              <mat-icon matPrefix>mail</mat-icon>
-              <input matInput placeholder="Inserisci E-Mail"  style="color: black;"
-              [formControl]="MailNPControl" type="email">
-              <mat-error *ngIf="MailNPControl.invalid && MailControl.dirty">
-                Inserisci un indirizzo valido
-              </mat-error>
-              <mat-error *ngIf="MailNPControl.hasError('required')">
-                E-Mail &eacute; <strong>richiesto</strong>
-              </mat-error>
-            </mat-form-field>
-          </div>
-          <div class="col-md-12 MMS">
-            <mat-form-field class="example-full-width" appearance="standard">
-              <mat-label style="color: black;">Password</mat-label>
-              <mat-icon matPrefix>vpn_key</mat-icon>
-              <input matInput placeholder="Inserisci Password"  style="color: black;"
-              [formControl]="PSWNPControl" type="password">
-          <mat-error  *ngIf="PSWNPControl.hasError('required')">Devi inseire la Password.</mat-error >
-          <mat-error  *ngIf="PSWNPControl.hasError('minlength')">La Password deve contenere almeno 8 caratteri.</mat-error >
-          </mat-form-field>
-          </div>
+          <div class="col-md-12 MMS" >
+            <label>Nome *:</label>
+              <input id="nome" formControlName="Nome" type="text" class="form-control" name="nome"
+              [ngClass]= "{'is-invalid': NomeMPControl.invalid && NomeMPControl.dirty,'is-valid': NomeMPControl.valid && NomeMPControl.dirty}">
 
-          <div class="col-md-12 MMS">
-            <mat-form-field class="example-full-width" appearance="standard">
-              <mat-label style="color: black;">Conferma Password</mat-label>
-              <mat-icon matPrefix>vpn_key</mat-icon>
-              <input matInput placeholder="Conferma Password"  style="color: black;"
-              [formControl]="CPSWNPControl" type="password">
-                <mat-error *ngIf="CPSWNPControl.hasError('required')">>Devi confermare la Password.</mat-error>
-                <mat-error *ngIf="CPSWNPControl.invalid && !CPSWNPControl.hasError('required')">Password and Conferma Password devono coincidere.</mat-error>
-            </mat-form-field>
-          </div>
+                <div
+                *ngIf="NomeMPControl.errors && NomeMPControl.dirty"
+                class="invalid-feedback">
+                <p *ngIf="NomeMPControl.errors.required" >
+                  * Campo obbligatorio
+                </p>
+              </div>
+            </div>
+        <div class="col-md-12 MMS">
+          <label>Cognome *:</label>
+            <input id="cognome" formControlName="Cognome" type="text" class="form-control" name="cognome"
+            [ngClass]= "{'is-invalid': CognomeMPControl.invalid && CognomeMPControl.dirty,'is-valid': CognomeMPControl.valid && CognomeMPControl.dirty}">
+
+              <div
+              *ngIf="CognomeMPControl.errors && CognomeMPControl.dirty"
+              class="invalid-feedback">
+              <p *ngIf="CognomeMPControl.errors.required" >
+                * Campo obbligatorio
+              </p>
+            </div>
+        </div>
+        <div class="col-md-12 MMS">
+          <label>Nickname *:</label>
+            <input id="nicj" formControlName="Nickname" type="text" class="form-control" name="NICK"
+            [ngClass]= "{'is-invalid': NickMPControl.invalid && NickMPControl.dirty,'is-valid': NickMPControl.valid && NickMPControl.dirty}">
+
+              <div
+              *ngIf="NickMPControl.errors && NickMPControl.dirty"
+              class="invalid-feedback">
+              <p *ngIf="NickMPControl.errors.required" >
+                * Campo obbligatorio
+              </p>
+            </div>
+        </div>
+        <div class="col-md-12 MMS">
+          <label>E-Mail *:</label>
+            <input id="email" formControlName="Mail" type="email" class="form-control" name="email" [disabled]="true"
+            [ngClass]= "{'is-invalid': MailNPControl.invalid && MailNPControl.dirty,'is-valid': MailNPControl.valid && MailNPControl.dirty}">
+
+            <div class="invalid-feedback" *ngIf="MailNPControl.invalid && MailNPControl.dirty">
+              <p>Inserisci un indirizzo valido</p>
+            </div>
+              <div
+              *ngIf="MailNPControl.errors && MailNPControl.dirty"
+              class="invalid-feedback">
+              <p *ngIf="MailNPControl.errors.required" >
+                * Campo obbligatorio
+              </p>
+            </div>
+        </div>
+        <div class="col-md-12 MMS">
+          <label>Password *:</label>
+            <input id="password" formControlName="Rpassword" type="password" class="form-control" name="password"
+            [ngClass]= "{'is-invalid': PSWNPControl.invalid && PSWNPControl.dirty,'is-valid': PSWNPControl.valid && PSWNPControl.dirty}">
+              <div
+              *ngIf="PSWNPControl.errors && PSWNPControl.dirty"
+              class="invalid-feedback">
+              <p *ngIf="PSWNPControl.errors.required" >
+                * Campo obbligatorio
+              </p>
+              <p *ngIf="PSWNPControl.errors.minlength" >
+                La Password deve contenere almeno 8 caratteri.
+              </p>
+            </div>
+        </div>
+
+        <div class="col-md-12 MMS">
+          <label>Conferma Password *:</label>
+            <input id="cpassword" formControlName="Rconfirm_password" type="password" class="form-control" name="cpassword"
+            [ngClass]= "{'is-invalid': CPSWNPControl.invalid && CPSWNPControl.dirty,'is-valid': CPSWNPControl.valid && CPSWNPControl.dirty}">
+              <div
+              *ngIf="CPSWNPControl.errors && CPSWNPControl.dirty"
+              class="invalid-feedback">
+              <p *ngIf="CPSWNPControl.errors.required" >
+                * Campo obbligatorio
+              </p>
+              <p *ngIf="!CPSWNPControl.errors.raccolte && CPSWNPControl.invalid" >
+                Password e Conferma Password devono coincidere.
+              </p>
+            </div>
+        </div>
         </form>
       </div>
       <div class="modal-footer">
@@ -205,9 +214,9 @@
   </div>
 </div>
 <div class="modal fade" id="NEWAVATAR" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog  mod" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header border-bottom-0">
         <h3 class="modal-title" id="exampleModalLongTitle">Modifica Foto Profilo</h3>
         <button #closeModalAvatar type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -255,7 +264,7 @@
 
 <div class="modal fade" id="LOGIN" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
 
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header border-bottom-0">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close" #closeModalL   >
@@ -299,9 +308,12 @@
 
 
 <div class="modal fade" id="REGISTER" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+
+
+
+  <div class="modal-dialog mod" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header border-bottom-0">
         <h3 class="modal-title" id="exampleModalLongTitle">Registrazione</h3>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" #closeModalR>
           <span aria-hidden="true">&times;</span>
@@ -337,82 +349,91 @@
 
 
           </div>
-          <div class="col-md-12 MMS">
-            <mat-form-field class="example-full-width" appearance="standard">
-              <mat-label style="color: black;">Nome</mat-label>
-              <mat-icon matPrefix>account_circle</mat-icon>
-              <input matInput placeholder="Inserisci Cognome"  style="color: black;"
-              [formControl]="NomeControl" type="text">
-              <mat-error *ngIf="NomeControl.invalid && NomeControl.dirty">
-                Inserisci un Nome lungo almeno 3 caratteri
-              </mat-error>
-              <mat-error *ngIf="NomeControl.hasError('required')">
-                Nome &eacute; <strong>richiesto</strong>
-              </mat-error>
-            </mat-form-field>
-          </div>
+          <div class="col-md-12 MMS" >
+            <label>Nome *:</label>
+              <input id="nome" formControlName="Nome" type="text" class="form-control" name="nome"
+              [ngClass]= "{'is-invalid': NomeControl.invalid && NomeControl.dirty,'is-valid': NomeControl.valid && NomeControl.dirty}">
+
+                <div
+                *ngIf="NomeControl.errors && NomeControl.dirty"
+                class="invalid-feedback">
+                <p *ngIf="NomeControl.errors.required" >
+                  * Campo obbligatorio
+                </p>
+              </div>
+            </div>
         <div class="col-md-12 MMS">
-          <mat-form-field class="example-full-width" appearance="standard">
-            <mat-label style="color: black;">Cognome</mat-label>
-            <mat-icon matPrefix>account_circle</mat-icon>
-            <input matInput placeholder="Inserisci Cognome"  style="color: black;"
-            [formControl]="CognomeControl" type="text">
-            <mat-error *ngIf="CognomeControl.invalid && CognomeControl.dirty">
-              Inserisci un cognome lungo almeno 3 caratteri
-            </mat-error>
-            <mat-error *ngIf="CognomeControl.hasError('required')">
-              Cognome &eacute; <strong>richiesto</strong>
-            </mat-error>
-          </mat-form-field>
+          <label>Cognome *:</label>
+            <input id="cognome" formControlName="Cognome" type="text" class="form-control" name="cognome"
+            [ngClass]= "{'is-invalid': CognomeControl.invalid && CognomeControl.dirty,'is-valid': CognomeControl.valid && CognomeControl.dirty}">
+
+              <div
+              *ngIf="CognomeControl.errors && CognomeControl.dirty"
+              class="invalid-feedback">
+              <p *ngIf="CognomeControl.errors.required" >
+                * Campo obbligatorio
+              </p>
+            </div>
         </div>
         <div class="col-md-12 MMS">
-          <mat-form-field class="example-full-width" appearance="standard">
-            <mat-label style="color: black;">Nickname</mat-label>
-            <mat-icon matPrefix>account_circle</mat-icon>
-            <input matInput placeholder="Inserisci Nickname"  style="color: black;"
-            [formControl]="NickControl" type="text">
-            <mat-error *ngIf="NickControl.invalid && NickControl.dirty">
-              Inserisci un Nickname lungo almeno 3 caratteri
-            </mat-error>
-            <mat-error *ngIf="NickControl.hasError('required')">
-              Nickname &eacute; <strong>richiesto</strong>
-            </mat-error>
-          </mat-form-field>
+          <label>Nickname *:</label>
+            <input id="nicj" formControlName="Nickname" type="text" class="form-control" name="NICK"
+            [ngClass]= "{'is-invalid': NickControl.invalid && NickControl.dirty,'is-valid': NickControl.valid && NickControl.dirty}">
+
+              <div
+              *ngIf="NickControl.errors && NickControl.dirty"
+              class="invalid-feedback">
+              <p *ngIf="NickControl.errors.required" >
+                * Campo obbligatorio
+              </p>
+            </div>
         </div>
         <div class="col-md-12 MMS">
-          <mat-form-field class="example-full-width" appearance="standard">
-            <mat-label style="color: black;">E-Mail</mat-label>
-            <mat-icon matPrefix>mail</mat-icon>
-            <input matInput placeholder="Inserisci E-Mail"  style="color: black;"
-            [formControl]="MailControl" type="email">
-            <mat-error *ngIf="MailControl.invalid && MailControl.dirty">
-              Inserisci un indirizzo valido
-            </mat-error>
-            <mat-error *ngIf="MailControl.hasError('required')">
-              E-Mail &eacute; <strong>richiesto</strong>
-            </mat-error>
-          </mat-form-field>
+          <label>E-Mail *:</label>
+            <input id="email" formControlName="Mail" type="email" class="form-control" name="email"
+            [ngClass]= "{'is-invalid': MailControl.invalid && MailControl.dirty,'is-valid': MailControl.valid && MailControl.dirty}">
+
+            <div class="invalid-feedback" *ngIf="MailControl.invalid && MailControl.dirty">
+              <p>Inserisci un indirizzo valido</p>
+            </div>
+              <div
+              *ngIf="MailControl.errors && MailControl.dirty"
+              class="invalid-feedback">
+              <p *ngIf="MailControl.errors.required" >
+                * Campo obbligatorio
+              </p>
+            </div>
         </div>
         <div class="col-md-12 MMS">
-          <mat-form-field class="example-full-width" appearance="standard">
-            <mat-label style="color: black;">Password</mat-label>
-            <mat-icon matPrefix>vpn_key</mat-icon>
-            <input matInput placeholder="Inserisci Password"  style="color: black;"
-            [formControl]="PSWControl" type="password">
-            <mat-error  *ngIf="PSWControl.hasError('required')">Devi inseire la Password.</mat-error >
-            <mat-error  *ngIf="PSWControl.hasError('minlength')">La Password deve contenere almeno 8 caratteri.</mat-error >
-        </mat-form-field>
+          <label>Password *:</label>
+            <input id="password" formControlName="password" type="password" class="form-control" name="password"
+            [ngClass]= "{'is-invalid': PSWControl.invalid && PSWControl.dirty,'is-valid': PSWControl.valid && PSWControl.dirty}">
+              <div
+              *ngIf="PSWControl.errors && PSWControl.dirty"
+              class="invalid-feedback">
+              <p *ngIf="PSWControl.errors.required" >
+                * Campo obbligatorio
+              </p>
+              <p *ngIf="PSWControl.errors.minlength" >
+                La Password deve contenere almeno 8 caratteri.
+              </p>
+            </div>
         </div>
 
         <div class="col-md-12 MMS">
-          <mat-form-field class="example-full-width" appearance="standard">
-            <mat-label style="color: black;">Conferma Password</mat-label>
-            <mat-icon matPrefix>vpn_key</mat-icon>
-            <input matInput placeholder="Conferma Password"  style="color: black;"
-            [formControl]="CPSWControl" type="password">
-            <mat-error *ngIf="CPSWControl.hasError('required')">>Devi confermare la Password.</mat-error>
-            <mat-error *ngIf="CPSWControl.invalid && !CPSWControl.hasError('required')">Password and Conferma Password devono coincidere.</mat-error>
-          </mat-form-field>
+          <label>Conferma Password *:</label>
+            <input id="cpassword" formControlName="confirm_password" type="password" class="form-control" name="cpassword"
+            [ngClass]= "{'is-invalid': CPSWControl.invalid && CPSWControl.dirty,'is-valid': CPSWControl.valid && CPSWControl.dirty}">
+              <div
+              *ngIf="CPSWControl.errors && CPSWControl.dirty"
+              class="invalid-feedback">
+              <p *ngIf="CPSWControl.errors.required" >
+                * Campo obbligatorio
+              </p>
+              <p *ngIf="!CPSWControl.errors.raccolte && CPSWControl.invalid" >
+                Password e Conferma Password devono coincidere.
+              </p>
+            </div>
         </div>
         <div class="col-md-12 MMS">
 

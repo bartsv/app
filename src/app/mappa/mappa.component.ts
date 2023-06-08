@@ -1,6 +1,6 @@
 import { Component, Input, AfterViewInit, OnChanges, Output, EventEmitter, HostListener, ElementRef, ViewChild } from '@angular/core';
 import * as L from 'leaflet';
-import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, Validators } from '@angular/forms';
+import { FormBuilder, UntypedFormArray, UntypedFormBuilder, UntypedFormControl, Validators } from '@angular/forms';
 import { AuthConfig, OAuthService } from 'angular-oauth2-oidc';
 import { UserService } from '../classi/user.service';
 import { DivshowService } from '../classi/divshow.service';
@@ -285,119 +285,6 @@ export class MappaComponent implements AfterViewInit {
     }
   }
 
-  RankAdd1C="assets/gr.png";
-  RankAdd2C="assets/gr.png";
-  RankAdd3C="assets/gr.png";
-  RankAdd4C="assets/gr.png";
-  RankAdd5C="assets/gr.png";
-  changeAddR1C(){
-    let v=this.Point.access
-    this.RankAddC=1
-    if(v=='g'){
-      this.RankAdd1C="assets/g.png";
-    }
-    if(v=='y'){
-      this.RankAdd1C="assets/y.png";
-    }
-    if(v=='r'){
-      this.RankAdd1C="assets/r.png";
-    }
-    this.RankAdd2C="assets/gr.png";
-    this.RankAdd3C="assets/gr.png";
-    this.RankAdd4C="assets/gr.png";
-    this.RankAdd5C="assets/gr.png";
-  }
-  changeAddR2C(){
-    this.RankAddC=2
-    let v=this.Point.access
-    if(v=='g'){
-      this.RankAdd1C="assets/g.png";
-      this.RankAdd2C="assets/g.png";
-    }
-    if(v=='y'){
-      this.RankAdd1C="assets/y.png";
-      this.RankAdd2C="assets/y.png";
-    }
-    if(v=='r'){
-      this.RankAdd1C="assets/r.png";
-      this.RankAdd2C="assets/r.png";
-    }
-    this.RankAdd3C="assets/gr.png";
-    this.RankAdd4C="assets/gr.png";
-    this.RankAdd5C="assets/gr.png";
-  }
-  changeAddR3C(){
-    this.RankAddC=3
-    let v=this.Point.access
-    if(v=='g'){
-      this.RankAdd1C="assets/g.png";
-      this.RankAdd2C="assets/g.png";
-      this.RankAdd3C="assets/g.png";
-    }
-    if(v=='y'){
-      this.RankAdd1C="assets/y.png";
-      this.RankAdd2C="assets/y.png";
-      this.RankAdd3C="assets/y.png";
-    }
-    if(v=='r'){
-      this.RankAdd1C="assets/r.png";
-      this.RankAdd2C="assets/r.png";
-      this.RankAdd3C="assets/r.png";
-    }
-    this.RankAdd4C="assets/gr.png";
-    this.RankAdd5C="assets/gr.png";
-  }
-  changeAddR4C(){
-    let v=this.Point.access
-    this.RankAddC=4
-    if(v=='g'){
-      this.RankAdd1C="assets/g.png";
-      this.RankAdd2C="assets/g.png";
-      this.RankAdd3C="assets/g.png";
-      this.RankAdd4C="assets/g.png";
-    }
-    if(v=='y'){
-      this.RankAdd1C="assets/y.png";
-      this.RankAdd2C="assets/y.png";
-      this.RankAdd3C="assets/y.png";
-      this.RankAdd4C="assets/y.png";
-    }
-    if(v=='r'){
-      this.RankAdd1C="assets/r.png";
-      this.RankAdd2C="assets/r.png";
-      this.RankAdd3C="assets/r.png";
-      this.RankAdd4C="assets/r.png";
-    }
-    this.RankAdd5C="assets/gr.png";
-  }
-  changeAddR5C(){
-    let v=this.Point.access
-    this.RankAddC=5
-    if(v=='g'){
-      this.RankAdd1C="assets/g.png";
-      this.RankAdd2C="assets/g.png";
-      this.RankAdd3C="assets/g.png";
-      this.RankAdd4C="assets/g.png";
-      this.RankAdd5C="assets/g.png";
-    }
-    if(v=='y'){
-      this.RankAdd1C="assets/y.png";
-      this.RankAdd2C="assets/y.png";
-      this.RankAdd3C="assets/y.png";
-      this.RankAdd4C="assets/y.png";
-      this.RankAdd5C="assets/y.png";
-    }
-    if(v=='r'){
-      this.RankAdd1C="assets/r.png";
-      this.RankAdd2C="assets/r.png";
-      this.RankAdd3C="assets/r.png";
-      this.RankAdd4C="assets/r.png";
-      this.RankAdd5C="assets/r.png";
-    }
-  }
-
-
-
 
 
 
@@ -435,9 +322,8 @@ onResize(event) {
   var def:Dimension=new Dimension(this.screenHeight,this.screenWidth)
   this.Dim.nextMessage(def)
 }
-@ViewChild('buttonToBeClickedComment') buttonToBeClickedComment: ElementRef;
+
 @ViewChild('buttonToBeClickedMod') buttonToBeClickedMod: ElementRef;
-@ViewChild('buttonToBeClickedCommentClose') buttonToBeClickedCommentClose: ElementRef;
 @ViewChild('buttonToBeClicked') buttonToBeClicked: ElementRef;
 @ViewChild('buttonToBeClickedMP') buttonToBeClickedMP: ElementRef;
 @ViewChild('buttonToBeClickedAddP') buttonToBeClickedAddP: ElementRef;
@@ -452,7 +338,7 @@ getCommenti(){
   this.isCalendario=3
 }
   constructor(private users: UserService, private divS: DivshowService,private divSADD: DivshowaddService, private PUN : PuntoService,private ListaPunti:PointService,private ListaPuntiDB:PointdbService,
-              private DBService: DBServiceService, private formBuilder: UntypedFormBuilder,private divV:DivshowAddCommentService,private Search:SearchService,private Dim:HeihtService,private Mod:ModPointService) {
+              private DBService: DBServiceService, private formBuilder: FormBuilder,private divV:DivshowAddCommentService,private Search:SearchService,private Dim:HeihtService,private Mod:ModPointService) {
                 this.screenWidth = window.innerWidth ;
                 this.screenHeight = window.innerHeight;
                 this.divS.nextMessage(this.isShown)
@@ -467,7 +353,7 @@ getCommenti(){
                 });
                 this.divV.getValues().subscribe((value) => {
                   if(value){
-                    this.buttonToBeClickedComment.nativeElement.click();
+                   // this.buttonToBeClickedComment.nativeElement.click();
                   }
                 });
                 this.Mod.getValues().subscribe((value) => {
@@ -480,6 +366,7 @@ getCommenti(){
                     this.WMControl.setValue(this.Point.website)
                     this.FonteMControl.setValue(this.Point.access)
                     this.src=this.Point.photoH
+                    console.log(this.Point)
                     this.setService()
                     this.isfile=true
                   }
@@ -581,9 +468,12 @@ getCommenti(){
       this.user = value;
       if(this.user!=null){
         this.LoginOK=true;
-        this.addPointToMap()
         ////console.log('q1p,')
       }
+      else{
+        this.LoginOK=false
+      }
+      this.addPointToMap()
     });
     this.ListaPunti.getValues().subscribe((value) => {
       if(this.Punti==null){
@@ -613,7 +503,7 @@ getCommenti(){
         this.Punti=value
       }
       else{
-        console.log(this.Punti.length+' dP'+value.length)
+       // console.log(this.Punti.length+' dP'+value.length)
         for (const v in value) {
         const index = value.findIndex(item => item.id === this.Punti[v].id);
         if(index>=0){
@@ -645,7 +535,7 @@ getCommenti(){
        if(this.isShownAdd){
        if( this.Point.street==="" ||this.Point.address ==="" ){
         DBService.getPointAddress(this.Point.lat,this.Point.lon).subscribe(data=>{
-          this.Point.address=data['address']['road']
+          this.Point.address=data['address']['road']+' '+data['address']['house_number']
           this.Point.city=data['address']['city']
           this.Point.naz=data['address']['country']
           this.ADRESSControl.setValue(this.Point.address )
@@ -688,29 +578,7 @@ getCommenti(){
  loadImageFailed() {
      // show message
  }
-    comment:Commento
-    AddComment(){
-      this.comment= {
-        ranking:this.RankAddC,
-        point_id:this.Point.id,
-        descrizione:this.AddCommentoControl.value,
-        id: 0,
-        created_at:'',
-        updated_at:'',
-        user:null
-      };
-    this.DBService.SaveComment(this.comment).subscribe(data => {
-      if(data['status']==200){
-        this.Point.Commenti=data['comment']
-        this.Point.ranking=data['rank']
-        this.PUN.nextMessage(this.Point)
-        this.buttonToBeClickedCommentClose.nativeElement.click();
-        this.RankAddC=0
-        this.reactiveFormAddC.reset()
-      }
-      })
-    }
-    modPoint(){
+   modPoint(){
       this.Point.address=this.ADRESSMControl.value;
       this.Point.phone=this.PHONEMControl.value;
       this.Point.website=this.WMControl.value;
@@ -807,6 +675,7 @@ Closadd(){
   this.divSADD.nextMessage(false)
 }
   ngAfterViewInit(): void {
+
     this.divS.nextMessage(this.isShown)
      this.divS.getValues().subscribe((value) => this.isShown = value);
      this.PUN.getValues().subscribe((value) => {

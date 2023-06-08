@@ -9,15 +9,12 @@
 <button type="button" class="btn btn-primary" hidden #buttonToBeClickedMod data-toggle="modal" data-target="#exampleModalM">
   Launch demo modal
 </button>
-<button type="button" class="btn btn-primary" hidden #buttonToBeClickedComment data-toggle="modal" data-target="#CommentModal">
-  Launch demo modal
-</button>
 <!--Modal Add Point-->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="exampleModalLabel">{{nome}}</h4>
+        <h2 class="modal-title" id="exampleModalLabel">{{nome}}</h2>
         <button type="button" class="close" data-dismiss="modal" #buttonToBeClickedAddP aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -86,11 +83,11 @@
           <label for="acess">Accessibilit&aacute;:</label>
 
           <p style="text-align: center;">
-            <img src="{{Rampa}}" height="50px" class="MMS" (click)="AddAccess('rampa')">
-            <img src="{{Ascensore}}" height="50px" class="MMS" (click)="AddAccess('ascensore')">
-            <img src="{{MMScale}}" height="50px" class="MMS" (click)="AddAccess('montascale')">
-            <img src="{{WC}}" height="50px" class="MMS" (click)="AddAccess('wc')">
-            <img src="{{Parking}}" height="50px" class="MMS" (click)="AddAccess('parking')">
+            <img src="{{RampaM}}" height="50px" class="MMS" (click)="AddAccess('rampa')">
+            <img src="{{AscensoreM}}" height="50px" class="MMS" (click)="AddAccess('ascensore')">
+            <img src="{{MMScaleM}}" height="50px" class="MMS" (click)="AddAccess('montascale')">
+            <img src="{{WCM}}" height="50px" class="MMS" (click)="AddAccess('wc')">
+            <img src="{{ParkingM}}" height="50px" class="MMS" (click)="AddAccess('parking')">
           </p>
         </div>
 
@@ -101,7 +98,7 @@
           <image-cropper
               [imageChangedEvent]="imageChangedEvent"
               [maintainAspectRatio]="true"
-              [aspectRatio]="16 / 9"
+              [aspectRatio]="16 / 4"
               format="png"
               (imageCropped)="imageCropped($event)"
               (imageLoaded)="imageLoaded()"
@@ -301,11 +298,11 @@
         </div>
 
 </div>-->
-<div *ngIf="isShown" class = "overlay" style="height: {{screenHeight}}px;" >
+<div *ngIf="isShown" class = "overlay" style="height: {{screenHeight-55}}px;" >
     <div  class="modal-headers">
         <img class="logo" src="{{icon}}">
         <p class="nomelocale" >{{nome}}</p>
-        <a (click)="Closa()" class="close"></a>
+        <a (click)="Closa()" class="close1"></a>
       </div>
       <div  class="modal-bodys">
         <div *ngIf="isCalendario==1" id="menu-ita">
@@ -355,40 +352,3 @@
 
       </div>
  </div>
-<!-- Modal Add Commet-->
-<div class="modal fade" id="CommentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Aggiungi commento per {{nome}}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form validate  [formGroup]="reactiveFormAddC">
-        <div class="form-group">
-          <label>Recensione:</label>
-          <p style="text-align: center;">
-            <img src="{{RankAdd1C}}" height="25px" class="MMS" (mouseover)="changeAddR1C()">
-            <img src="{{RankAdd2C}}" height="25px" class="MMS" (mouseover)="changeAddR2C()">
-            <img src="{{RankAdd3C}}" height="25px" class="MMS" (mouseover)="changeAddR3C()">
-            <img src="{{RankAdd4C}}" height="25px" class="MMS" (mouseover)="changeAddR4C()">
-            <img src="{{RankAdd5C}}" height="25px" class="MMS" (mouseover)="changeAddR5C()">
-          </p>
-          <mat-form-field class="example-full-width" appearance="standard">
-            <mat-label  style="color: black;">Inserisci un commento</mat-label>
-            <textarea matInput placeholder="Ex. It makes me feel..." style="color: black;" [formControl]="CommentoControl"  rows="4"></textarea>
-          </mat-form-field>
-        </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <span *ngIf="RankAddC>0 && reactiveFormAddC.valid">
-        <button type="button" class="btn btn-primary" (click)="AddComment()">Salva Commento</button>
-        </span>
-      </div>
-    </div>
-  </div>
-</div>

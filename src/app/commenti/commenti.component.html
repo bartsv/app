@@ -1,9 +1,36 @@
 <div style="height: {{screenHeight}}px;">
   <div class="scroll">
 	<div class="col-md-12" >
-        <button *ngIf="LoginOK" class="myButton" (click)="addComment()">
+        <button *ngIf="LoginOK && !CommentoOK" class="myButton" (click)="addComment()">
           Aggiungi Commento
         </button>
+        <div *ngIf="LoginOK && CommentoOK">
+
+        <form validate  [formGroup]="reactiveFormAddC">
+          <div class="form-group">
+            <label>Recensione:</label>
+            <p style="text-align: center;">
+              <img src="{{RankAdd1C}}" height="18px" class="MMS" (mouseover)="changeAddR1C()">
+              <img src="{{RankAdd2C}}" height="18px" class="MMS" (mouseover)="changeAddR2C()">
+              <img src="{{RankAdd3C}}" height="18px" class="MMS" (mouseover)="changeAddR3C()">
+              <img src="{{RankAdd4C}}" height="18px" class="MMS" (mouseover)="changeAddR4C()">
+              <img src="{{RankAdd5C}}" height="18px" class="MMS" (mouseover)="changeAddR5C()">
+            </p>
+            <mat-form-field appearance="standard">
+              <mat-label  style="color: black;">Inserisci un commento</mat-label>
+              <textarea matInput placeholder="Ex. It makes me feel..." style="color: black;" [formControl]="AddCommentoControl"  rows="4"></textarea>
+            </mat-form-field>
+          </div>
+          </form>
+          <div class="modal-footer">
+            <button *ngIf="RankAddC>0 && reactiveFormAddC.valid" class="myButton" (click)="AddComment()">
+              Aggiungi Commento
+            </button>
+            <button class="myButton" (click)="closeComment()">
+              Chiudi
+            </button>
+          </div>
+        </div>
 			<div class="body_comment">
      <!--  <div class="row">
 					<div class="avatar_comment col-md-2">

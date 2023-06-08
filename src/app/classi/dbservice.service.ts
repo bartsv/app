@@ -122,6 +122,7 @@ export class DBServiceService {
   SaveComment(p:Commento){
     const formData = new FormData();
     formData.append('Comment',JSON.stringify(p))
+    console.log(JSON.stringify(p))
     return this.http.post(this.loginUrl+'AddComment.php', formData);
   }
   DeletCommento(idC:number,idP:number){
@@ -132,6 +133,7 @@ export class DBServiceService {
   }
   getPointAddress(lat:number,lon:number){
     const url='https://nominatim.openstreetmap.org/reverse?lat='+lat+'&lon='+lon+'&format=json'
+    console.log(url)
     return this.http.get(url, httpOptions );
   }
   getPointCoordinate(q:string){

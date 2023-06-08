@@ -24,6 +24,7 @@ export class NavbarComponent implements OnInit,AfterViewInit {
     this.DB.changeAvatarLOGIN(this.croppedImage).subscribe(data => {
       if(data['status']==200){
       this.photoU =data['photo']
+      localStorage.setItem('photo', data['photo'])
       this.croppedImage=''
       this.isfile=true
       this.isfileOK=true
@@ -86,7 +87,7 @@ LoginOK=false;nomeU!: string;
   CognomeMPControl: any;
   NickMPControl: any;
 LogOut(){
-  localStorage.setItem('token', '')
+  localStorage.removeItem('token')
   this.eser.nextMessage(null)
 
 }
@@ -263,6 +264,7 @@ modPSW(){
         const decoded = jwtDecode<JwtPayload>(data['access_token']);
         this.nomeU =decoded['nick']
         this.photoU =data['photo']
+        localStorage.setItem('photo', data['photo'])
         this.LoginOK=true
         this.reactiveFormLogin.reset()
         this.closeModalL.nativeElement.click()
@@ -312,7 +314,14 @@ modPSW(){
     // convenience getter for easy access to form fields
     get f() { return this.reactiveFormRegister.controls; }
       ngOnInit(): void {
-
+        var t=localStorage.getItem('token')
+        if(t!=null){
+          this.eser.nextMessage(t)
+          const decoded = jwtDecode<JwtPayload>(t);
+          this.nomeU =decoded['nick']
+          this.photoU =localStorage.getItem('photo')
+          this.LoginOK=true
+        }
     this.googleAuthSDK()
   }
   ngAfterViewInit() {

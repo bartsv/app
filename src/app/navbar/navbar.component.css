@@ -365,6 +365,13 @@ padding-left:20px;
       padding: 1rem;
     }
   }
+  .mod {
+    max-width: 300px;
+
+    .modal-content {
+      padding: 1rem;
+    }
+  }
 }
 
 .modal-header {
