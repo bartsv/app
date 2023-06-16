@@ -1,72 +1,115 @@
-
-<nav class="navbar   navbar-dark bg-ligth navbar-expand-lg">
-  <span class="logo"><a class="navbar-brand " href="#">
-    <img src="assets/xx.png" alt="">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand " href="#">
+    <img src="assets/xx.png" alt="" width="22" height="22">
     ccessApp
   </a>
-  <!--
-  <mat-form-field class="example-form-field" appearance="fill">
-    <mat-label style="color: white;">Cerca...</mat-label>
-    <input matInput style="color: white;font-size: large;" type="text" [formControl]="myControl"(keyup)="onKeyDownEvent($event)" matInput placeholder="Cerca..." [matAutocomplete]="auto">
-    <mat-icon class="white-icon" matPrefix>search</mat-icon>
-    <mat-autocomplete  #auto="matAutocomplete">
-      <mat-option  (onSelectionChange)="onEnter($event,state.id)" style="background-color: white;"   *ngFor="let state of states" [value]="state.display_name">
-        <img class="white-icon" style="vertical-align:middle;background: white;text-align: center;" aria-hidden src="{{state.icon}}" height="25" />
-        <span style="color:black;">{{ state.display_name }}</span>
-      </mat-option>
-    </mat-autocomplete>
-        </mat-form-field>
+
+    <form class="my-6 my-lg-0">
+      <div class="autocomplete-wrapper">
+      <input class="mr-md-3" type="search" placeholder="Search" aria-label="Search" (keydown)="onKeyDownEvent($event)" size="100">
+      <i class="fa fa-search" style="color: black;"></i>
+
+       <ul class="autocomplete-list">
+          <li *ngFor="let state of states">   <span class="listmenu">
+           <img class="white-icon" style="vertical-align:middle;background: white;text-align: center;" aria-hidden src="{{state.icon}}" height="25" />
+           <span style="color:black;">{{ state.display_name }}</span>
+
+         </span></li>
+
+       </ul>
+      </div>
+    </form><!--
+        <form class="form-inline my-2 my-lg-0 d-inline-block">
+          <div class="autocomplete-wrapper">
+           <input class="mr-2" id="searchWord" type="search" placeholder="Search" aria-label="Search">
+          </div>
+        </form>
 -->
-</span>
 
-<div class="search-container">
-  <form action="/action_page.php">
-    <input type="text" placeholder="Search.." name="search">
-    <button type="submit"><i class="fa fa-search"></i></button>
-  </form>
-</div>
-<div class="collapse navbar-collapse" id="navbarsExample05">
-    <ul   class="navbar-nav mr-auto">
+      <div class="text-right">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+      </div>
+  <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+      <ul class="navbar-nav ms-auto flex-nowrap">
+        <li class="nav-item mx-3" *ngIf="!LoginOK">
+          <a  data-toggle="modal" class="link" data-target="#LOGIN" style="cursor: pointer;"  >Accedi</a>
+        </li>
+        <li class="nav-item mx-3" *ngIf="!LoginOK">
+          <a data-toggle="modal" data-target="#REGISTER" class="link" style="cursor: pointer;">Registrati</a>
+        </li>
+        <li class="nav-item mx-3 dropdown"  *ngIf="LoginOK">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-    <li class="nav-item d-flex">
+          <img src="{{photoU}}" style="width: 22px;height: 23px;margin-right: 1px;margin-top: 0ch;">
+           {{nomeU}}
 
-    </li>
-    <li class="nav-item ">
-    </li>
-  </ul>
-  <ul class="navbar-nav" *ngIf="!LoginOK">
-   <li class="nav-item">
-   <a  data-toggle="modal" class="link" data-target="#LOGIN" style="cursor: pointer;"  >Accedi</a>
-   </li>
-   <li class="nav-item">
-   <a data-toggle="modal" data-target="#REGISTER" class="link" style="cursor: pointer;">Registrati</a>
-   </li>
-</ul>
-<ul class="navbar-nav" *ngIf="LoginOK">
-  <li class="nav-item dropdown">
-    <img src="{{photoU}}" style="width: 22px;height: 23px;margin-right: 1px;margin-top: 0ch;">
-    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          </a>
+          <div class="dropdown-menu" style="float: left;" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" data-toggle="modal" data-target="#NEWPSW" style="cursor: pointer;">Modifica Password</a>
+            <a class="dropdown-item" data-toggle="modal" data-target="#NEWAVATAR" style="cursor: pointer;">Modifica Avatar</a>
+            <a class="dropdown-item" (click)="LogOut()">Esci</a>
+          </div>
+        </li>
 
-     {{nomeU}}
-
-    </a>
-    <div class="dropdown-menu" style="float: right;" aria-labelledby="navbarDropdownMenuLink">
-      <a class="dropdown-item" data-toggle="modal" data-target="#NEWPSW" style="cursor: pointer;">Modifica Password</a>
-      <a class="dropdown-item" data-toggle="modal" data-target="#NEWAVATAR" style="cursor: pointer;">Modifica Avatar</a>
-      <a class="dropdown-item" (click)="LogOut()">Esci</a>
-    </div>
-  </li>
-</ul>
-</div>
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
-</button>
+      </ul>
+  </div>
 </nav>
 
 
+<!--
+<div class="navbar navbar-light bg-light navbar-expand-md px-3">
+  <a href="#" class="navbar-brand"><img src="assets/xx.png" alt="" width="20px" height="20px" ezimgfmt="rs rscb1 src ng ngcb1" class=" ezlazyloaded" data-ezsrc="/static_files/images/logos/logo_1.png?ezimgfmt=rs:50x50/rscb1/ngcb1/notWebP" ezoid="0.9005922882030155">ccessApp</a>
+  <div class="w-40">
+    <form class="form-inline my-2 my-lg-0">
+      <div class="autocomplete-wrapper">
+       <input class="mr-2" id="searchWord" type="search" placeholder="Search" aria-label="Search">
+       <i class="fa fa-search" style="color: black;"></i>
+
+        <ul class="autocomplete-list">
+           <li *ngFor="let state of states">   <span class="listmenu">
+            <img class="white-icon" style="vertical-align:middle;background: white;text-align: center;" aria-hidden src="{{state.icon}}" height="25" />
+            <span style="color:black;">{{ state.display_name }}</span>
+
+          </span></li>
+          <li ><span class="listmenu">aaa</span></li>
+          <li ><span class="listmenu">aaa</span></li>
+        </ul>
+      </div>
+    </form>
 
 
+</div>
+<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+  <span class="navbar-toggler-icon"></span></button>
+  <div class="navbar-collapse collapse" id="menu">
+    <ul class="navbar-nav ms-auto" style="list-style:none">
+    <li class="nav-item mx-3" *ngIf="!LoginOK">
+      <a  data-toggle="modal" class="link" data-target="#LOGIN" style="cursor: pointer;"  >Accedi</a>
+    </li>
+    <li class="nav-item mx-3" *ngIf="!LoginOK">
+      <a data-toggle="modal" data-target="#REGISTER" class="link" style="cursor: pointer;">Registrati</a>
+    </li>
+    <li class="nav-item mx-3 dropdown"  *ngIf="LoginOK">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
+      <img src="{{photoU}}" style="width: 22px;height: 23px;margin-right: 1px;margin-top: 0ch;">
+       {{nomeU}}
+
+      </a>
+      <div class="dropdown-menu" style="float: left;" aria-labelledby="navbarDropdownMenuLink">
+        <a class="dropdown-item" data-toggle="modal" data-target="#NEWPSW" style="cursor: pointer;">Modifica Password</a>
+        <a class="dropdown-item" data-toggle="modal" data-target="#NEWAVATAR" style="cursor: pointer;">Modifica Avatar</a>
+        <a class="dropdown-item" (click)="LogOut()">Esci</a>
+      </div>
+    </li>
+
+    </ul>
+    </div>
+</div>
+
+-->
 <!---
   <div class="topnav" id="myTopnav">
   <div class="logo">

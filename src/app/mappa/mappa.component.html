@@ -1,6 +1,60 @@
 <div class="map-container" style="width: {{screenWidth}}px;height: {{screenHeight}}px;">
   <div class="map-frame">
-    <div id="map"></div>
+    <div id="map">
+    <div *ngIf="isShown" class = "overlay" tabindex="-1" style="height: {{screenHeight}}px;" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-headers">
+      <h6 class="modal-title"><img class="logo" src="{{icon}}"> {{nome}}</h6>
+      <button type="button"  (click)="Closa()" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div *ngIf="isCalendario==1">
+        <ul class="nav justify-content-center">
+          <li class="nav-item active">
+            <a class="nav-link pointer navs" (click)="getDetail()" ><i class="fas fa-clipboard"></i> Dettagli</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link pointer" (click)="getPhoto()"><i class="fas fa-camera"></i> Photo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link  pointer" (click)="getCommenti()"><i class="fas fa-comment"></i> Commenti</a>
+          </li>
+        </ul>
+      <app-detail></app-detail>
+      </div>
+      <div *ngIf="isCalendario==2">
+        <ul class="nav justify-content-center">
+          <li class="nav-item active">
+            <a class="nav-link  pointer" (click)="getDetail()"><i class="fas fa-clipboard"></i> Dettagli</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link  pointer navs" (click)="getPhoto()"><i class="fas fa-camera"></i> Photo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link  pointer" (click)="getCommenti()"><i class="fas fa-comment"></i> Commenti</a>
+          </li>
+        </ul>
+      <app-photo></app-photo>
+      </div>
+      <div *ngIf="isCalendario==3">
+        <ul class="nav justify-content-center">
+          <li class="nav-item active">
+            <a class="nav-link  pointer" (click)="getDetail()"><i class="fas fa-clipboard"></i> Dettagli</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link  pointer" (click)="getPhoto()"><i class="fas fa-camera"></i> Photo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link  pointer navs" (click)="getCommenti()"><i class="fas fa-comment"></i> Commenti</a>
+          </li>
+        </ul>
+      <app-commenti></app-commenti>
+      </div>
+      </div>
+    </div>
+  </div>
   </div>
 </div><!-- Button trigger modal  style="width: {{screenWidth}}px;height: {{screenHeight+10}}px;-->
 <button type="button" class="btn btn-primary" hidden #buttonToBeClicked data-toggle="modal" data-target="#exampleModal">
@@ -298,57 +352,4 @@
         </div>
 
 </div>-->
-<div *ngIf="isShown" class = "overlay" style="height: {{screenHeight-55}}px;" >
-    <div  class="modal-headers">
-        <img class="logo" src="{{icon}}">
-        <p class="nomelocale" >{{nome}}</p>
-        <a (click)="Closa()" class="close1"></a>
-      </div>
-      <div  class="modal-bodys">
-        <div *ngIf="isCalendario==1" id="menu-ita">
-            <ul class="nav justify-content-center" >
-            <li class="nav-item active" style="display: inline;">
-              <a class="nav-link pointer navs"  (click)="getDetail()" ><i class="fa fa-clipboard"></i> Dettagli</a>
-            </li>
-            <li class="nav-item" style="display: inline;">
-              <a class="nav-link pointer" (click)="getPhoto()"><i class="fa fa-camera"></i> Photo</a>
-            </li>
-            <li class="nav-item" style="display: inline;">
-              <a class="nav-link  pointer" (click)="getCommenti()"><i class="fa fa-comment"></i> Commenti</a>
-            </li>
 
-          </ul>
-        <app-detail></app-detail>
-        </div>
-        <div *ngIf="isCalendario==2">
-          <ul class="nav justify-content-center">
-            <li class="nav-item active">
-              <a class="nav-link  pointer" (click)="getDetail()"><i class="fa fa-clipboard"></i> Dettagli</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link  pointer navs" (click)="getPhoto()"><i class="fa fa-camera"></i> Photo</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link  pointer" (click)="getCommenti()"><i class="fa fa-comment"></i> Commenti</a>
-            </li>
-          </ul>
-        <app-photo></app-photo>
-        </div>
-        <div *ngIf="isCalendario==3">
-          <ul class="nav justify-content-center">
-            <li class="nav-item active">
-              <a class="nav-link  pointer" (click)="getDetail()"><i class="fa fa-clipboard"></i> Dettagli</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link  pointer" (click)="getPhoto()"><i class="fa fa-camera"></i> Photo</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link  pointer navs" (click)="getCommenti()"><i class="fa fa-comment"></i> Commenti</a>
-            </li>
-          </ul>
-        <app-commenti></app-commenti>
-        </div>
-
-
-      </div>
- </div>

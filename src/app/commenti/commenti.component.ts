@@ -83,12 +83,12 @@ export class CommentiComponent implements OnInit {
       user:null
     };
   this.db.SaveComment(this.comment).subscribe(data => {
-    console.log(data)
     if(data['status']==200){
       this.Point.Commenti=data['comment']
       this.Point.ranking=data['rank']
       this.PUN.nextMessage(this.Point)
       this.RankAddC=0
+      this.CommentoOK=false
       this.reactiveFormAddC.reset()
     }
     })

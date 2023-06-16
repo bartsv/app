@@ -318,7 +318,7 @@ export class MappaComponent implements AfterViewInit {
   @HostListener('window:resize', ['$event'])
 onResize(event) {
   this.screenWidth = event.target.innerWidth;
-  this.screenHeight = event.target.innerHeight-39;
+  this.screenHeight = event.target.innerHeight-41;
   var def:Dimension=new Dimension(this.screenHeight,this.screenWidth)
   this.Dim.nextMessage(def)
 }
@@ -340,7 +340,7 @@ getCommenti(){
   constructor(private users: UserService, private divS: DivshowService,private divSADD: DivshowaddService, private PUN : PuntoService,private ListaPunti:PointService,private ListaPuntiDB:PointdbService,
               private DBService: DBServiceService, private formBuilder: FormBuilder,private divV:DivshowAddCommentService,private Search:SearchService,private Dim:HeihtService,private Mod:ModPointService) {
                 this.screenWidth = window.innerWidth ;
-                this.screenHeight = window.innerHeight;
+                this.screenHeight = window.innerHeight-41;
                 this.divS.nextMessage(this.isShown)
                 this.divS.getValues().subscribe((value) => this.isShown = value);
                 console.log(this.isShown+' aaa')
@@ -691,11 +691,12 @@ Closadd(){
       }
       });
       this.screenWidth = window.innerWidth ;
-      this.screenHeight = window.innerHeight-42;
+      this.screenHeight = window.innerHeight-41;
      this.Dim.nextMessage(new Dimension(this.screenHeight,this.screenWidth))
       ////console.log( this.Point)
     this.initMap();
   }
+
   private addPointToMap(): void{
           this.layerGroup.clearLayers();
           var divshow=this.divS;
@@ -785,8 +786,14 @@ Closadd(){
   private initMap(): void {
   this.map = L.map('map', {
     center: [ 44.30462714477678, 8.48447548624994],
-    zoom: 17
+    zoom: 17,
+    zoomControl: false,
+    maxZoom: 20,
+    minZoom: 11
   });
+  L.control.zoom({
+      position: 'topright'
+  }).addTo(this.map);
     var db=this.DBService
     var lista=this.ListaPunti
     var listaDB=this.ListaPuntiDB
